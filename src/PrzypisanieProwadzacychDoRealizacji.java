@@ -42,9 +42,9 @@ public class PrzypisanieProwadzacychDoRealizacji {
 		{
 			System.out.println("Blad przetwarzania SQL");
 		}
-		catch (IOException eIO) // B³¹d obs³ugi pliku zawieraj¹cego parametry po³¹czenia
+		catch (IOException eIO) // Bï¿½ï¿½d obsï¿½ugi pliku zawierajï¿½cego parametry poï¿½ï¿½czenia
 		{
-			System.out.println("Nie mo¿na otworzyæ pliku z parametrami po³¹czenia");
+			System.out.println("Nie moï¿½na otworzyï¿½ pliku z parametrami poï¿½ï¿½czenia");
 		}
 		
 		this.listaProwadzacych = listaProwadzacych;
@@ -60,6 +60,10 @@ public class PrzypisanieProwadzacychDoRealizacji {
 	private ListaPrzypisowProwadzacychDoRealizacji listaPrzypisowProwadzacychDoRealizacji;
 	
 	private PracownikAdministracyjny pracownikAdministracyjny;
+
+	private Prowadzacy prowadzacy;
+
+	private RealizacjaPrzedmiotu realizacjaPrzedmiotu;
 	
 	public List<Prowadzacy> getListaProwadzacych(){
 		Set<Prowadzacy> set = new HashSet<Prowadzacy>();
@@ -79,8 +83,20 @@ public class PrzypisanieProwadzacychDoRealizacji {
 		return lista;
 	}
 	
-	public void przypisanie(Prowadzacy prowadzacy, RealizacjaPrzedmiotu realizacjaPrzedmiotu) {
-		pracownikAdministracyjny.przypiszProwadzacegoDoRealizacji(prowadzacy, realizacjaPrzedmiotu, listaPrzypisowProwadzacychDoRealizacji);
+	public void przypisanie() {
+		pracownikAdministracyjny.przypiszProwadzacegoDoRealizacji(this.prowadzacy, this.realizacjaPrzedmiotu, listaPrzypisowProwadzacychDoRealizacji);
 	}
+
+	public void setProwadzacy(Prowadzacy prowadzacy)
+	{
+		this.prowadzacy = prowadzacy;
+	}
+
+	public void setRealizacjaPrzedmiotu(RealizacjaPrzedmiotu realizacjaPrzedmiotu)
+	{
+		this.realizacjaPrzedmiotu = realizacjaPrzedmiotu;
+	}
+
+
 	
 }
