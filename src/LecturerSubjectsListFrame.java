@@ -59,7 +59,14 @@ public class LecturerSubjectsListFrame extends JPanel
                     cardLayout.show(panel, "lecturerUnavailable");
                 else
                     cardLayout.show(panel, "lecturersList");
+
+                for(int i = 0; i < subjectsList1.length; ++i)
+                {
+                    if (list.getSelectedValue() == subjectsList1[i])
+                        lecturerSujectList.setRealizacjaPrzedmiotu(subjectList.get(i));
+                }
             }
+
         });
 
     }
