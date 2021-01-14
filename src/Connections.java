@@ -51,13 +51,20 @@ public class Connections {
 				"Po³aczenie do bazy danych poprawnie nawi¹zane. Wersja sterownika BD:" + meta.getDriverVersion());
 	}
 	
-	public ResultSet connectionMake(String SQLPolecenie ) throws SQLException 
+	public ResultSet connectionMakeRead(String SQLPolecenie) throws SQLException 
 	{
 		Statement stat = conn.createStatement();
 		
 		ResultSet rs = stat.executeQuery(SQLPolecenie);
 		
 		return rs; 
+	}
+	
+	public void connectionMakeUpdate(String SQLPolecenie) throws SQLException 
+	{
+		Statement stat = conn.createStatement();
+		
+		stat.executeUpdate(SQLPolecenie);
 	}
 	
 	public void closeConnection() throws SQLException // zamkniêcie po³¹czenia

@@ -18,9 +18,9 @@ public class PrzypadkiUzycia {
 		System.out.println(listaProwadzacych.get(2));
 		System.out.println(listaRealizacji.get(3));
 		
-		przypisanie.przypisanie(listaProwadzacych.get(1), listaRealizacji.get(3));
-		przypisanie.przypisanie(listaProwadzacych.get(1), listaRealizacji.get(3));
-		przypisanie.przypisanie(listaProwadzacych.get(2), listaRealizacji.get(3));
+		//przypisanie.przypisanie(listaProwadzacych.get(1), listaRealizacji.get(3));
+		//przypisanie.przypisanie(listaProwadzacych.get(1), listaRealizacji.get(3));
+		//przypisanie.przypisanie(listaProwadzacych.get(2), listaRealizacji.get(3));
 	}
 	
 	

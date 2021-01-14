@@ -1,4 +1,7 @@
 
+import java.io.IOException;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Set;
 
 public class PracownikAdministracyjny extends Pracownik {
@@ -78,14 +81,26 @@ public class PracownikAdministracyjny extends Pracownik {
 		przypisProwadzacegoDoRealizacji.setProwadzacy(prowadzacy);
 		przypisProwadzacegoDoRealizacji.setRealizacjaPrzedmiotu(realizacja);
 		
-		if(!listaPrzypisowProwadzacychDoRealizacji.czyZnalezionoPrzypis(przypisProwadzacegoDoRealizacji)) {
-			//dodanie do bazy danych
+		Connections connect = new Connections();
+		
+		int idPracownika = przypisProwadzacegoDoRealizacji.getProwadzacy().getId();
+		int idRealizacji = przypisProwadzacegoDoRealizacji.getRealizacjaPrzedmiotu().getId();
+		try{
+			connect.setConnection();
+			connect.connectionMakeUpdate("INSERT INTO Przypisy_prow_do_real "
+				    + "VALUES (przypis_pr_seq.nextval, "+ idPracownika + ", " + idRealizacji + ", SYSDATE, '0')");
+			connect.closeConnection();
+		}
+		catch (SQLException eSQL) 
+		{
+			System.out.println("Blad przetwarzania SQL");
+		}
+		catch (IOException eIO) // B³¹d obs³ugi pliku zawieraj¹cego parametry po³¹czenia
+		{
+			System.out.println("Nie mo¿na otworzyæ pliku z parametrami po³¹czenia");
+		}
 			
 			listaPrzypisowProwadzacychDoRealizacji.dodajPrzypis(przypisProwadzacegoDoRealizacji);
-			System.out.println("P!NK");
-		}
-		// do bazy danych
-		
 		
 	}
 }

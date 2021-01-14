@@ -20,10 +20,20 @@ public class PrzypisanieProwadzacychDoRealizacji {
 		
 		try{
 			connect.setConnection();
-			ResultSet rs = connect.connectionMake("Select ENAME From EMP");
+			ResultSet RsProwadzacy = connect.connectionMakeRead("SELECT PR.ID_PRACOWNIKA, IMIE, NAZWISKO FROM ProwadzacyT Pr JOIN Pracownicy P ON Pr.id_pracownika = P.id_pracownika");
+			ResultSet RsPrzedmioty = connect.connectionMakeRead("SELECT id_realizacji, nazwa, kod_przedmiotu, numer_semestru "
+				 +	"FROM Realizacje_przedmiotow RP "
+				 +	"JOIN Przedmioty P ON RP.id_przedmiotu = P.id_przedmiotu");
 			
-			while (rs.next()) {
-				System.out.println(rs.getString(1));
+			while (RsProwadzacy.next()) {
+				Prowadzacy prowadzacy = new Prowadzacy(RsProwadzacy.getInt(1),RsProwadzacy.getString(2),RsProwadzacy.getString(3));
+				listaProwadzacych.dodajProwadzacego(prowadzacy);
+			}
+			
+			while (RsPrzedmioty.next()) {
+				Przedmiot przedmiot = new Przedmiot(RsPrzedmioty.getString(2),  RsPrzedmioty.getString(4));
+				RealizacjaPrzedmiotu realizacjaPrzedmiotu = new RealizacjaPrzedmiotu(RsPrzedmioty.getInt(1), przedmiot , RsPrzedmioty.getString(3));
+				listaRealizacji.dodajRealizacje(realizacjaPrzedmiotu);
 			}
 			
 			connect.closeConnection();
@@ -36,38 +46,6 @@ public class PrzypisanieProwadzacychDoRealizacji {
 		{
 			System.out.println("Nie mo¿na otworzyæ pliku z parametrami po³¹czenia");
 		}
-		
-		
-		//docelowo z bazy danych w petli
-		Prowadzacy prowadzacy1 = new Prowadzacy(0,"Jan","Kaminski");
-		Prowadzacy prowadzacy2 = new Prowadzacy(1,"Jan","Janowski");
-		Prowadzacy prowadzacy3 = new Prowadzacy(2,"Michal","Kaminski");
-		Prowadzacy prowadzacy4 = new Prowadzacy(3,"Damian","Wegierski");
-		Prowadzacy prowadzacy5 = new Prowadzacy(4,"Iza","Angielska");
-		
-		listaProwadzacych.dodajProwadzacego(prowadzacy1);
-		listaProwadzacych.dodajProwadzacego(prowadzacy2);
-		listaProwadzacych.dodajProwadzacego(prowadzacy3);
-		listaProwadzacych.dodajProwadzacego(prowadzacy4);
-		listaProwadzacych.dodajProwadzacego(prowadzacy5);
-		
-		//docelowo z bazy danych w petli
-		Przedmiot przedmiot1 = new Przedmiot(0,0,"Grafika");
-		RealizacjaPrzedmiotu realizacjaPrzedmiotu1 = new RealizacjaPrzedmiotu(przedmiot1);
-		Przedmiot przedmiot2 = new Przedmiot(1,1,"Inzynieria Oprogramowania");
-		RealizacjaPrzedmiotu realizacjaPrzedmiotu2 = new RealizacjaPrzedmiotu(przedmiot2);
-		Przedmiot przedmiot3 = new Przedmiot(2,2,"Bazy Danych");
-		RealizacjaPrzedmiotu realizacjaPrzedmiotu3 = new RealizacjaPrzedmiotu(przedmiot3);
-		Przedmiot przedmiot4 = new Przedmiot(3,3,"Wstep do Informatyki");
-		RealizacjaPrzedmiotu realizacjaPrzedmiotu4 = new RealizacjaPrzedmiotu(przedmiot4);
-		Przedmiot przedmiot5 = new Przedmiot(4,4,"Analiza Matematyczna");
-		RealizacjaPrzedmiotu realizacjaPrzedmiotu5 = new RealizacjaPrzedmiotu(przedmiot5);
-		
-		listaRealizacji.dodajRealizacje(realizacjaPrzedmiotu1);
-		listaRealizacji.dodajRealizacje(realizacjaPrzedmiotu2);
-		listaRealizacji.dodajRealizacje(realizacjaPrzedmiotu3);
-		listaRealizacji.dodajRealizacje(realizacjaPrzedmiotu4);
-		listaRealizacji.dodajRealizacje(realizacjaPrzedmiotu5);
 		
 		this.listaProwadzacych = listaProwadzacych;
 		this.listaRealizacji = listaRealizacji;

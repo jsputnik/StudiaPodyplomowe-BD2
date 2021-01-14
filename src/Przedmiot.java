@@ -3,29 +3,28 @@ import java.util.Set;
 
 public class Przedmiot {
 	
-	Przedmiot(int id, int kod, String nazwa){
-		this.id = id;
+	Przedmiot(String nazwa, String kod){
 		this.kodPrzedmiotu = kod;
 		this.nazwa = nazwa;
 	}
 
-	private Object id;
+	private int id;
 
-	public Object getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(Object id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
-	private int kodPrzedmiotu;
+	private String kodPrzedmiotu;
 
-	public int getKodPrzedmiotu() {
+	public String getKodPrzedmiotu() {
 		return kodPrzedmiotu;
 	}
 
-	public void setKodPrzedmiotu(int kodPrzedmiotu) {
+	public void setKodPrzedmiotu(String kodPrzedmiotu) {
 		this.kodPrzedmiotu = kodPrzedmiotu;
 	}
 

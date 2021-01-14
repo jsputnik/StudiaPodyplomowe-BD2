@@ -3,27 +3,29 @@ import java.util.Set;
 
 public class RealizacjaPrzedmiotu {
 	
-	RealizacjaPrzedmiotu(Przedmiot przedmiot){
+	RealizacjaPrzedmiotu(int id, Przedmiot przedmiot, String semestr){
+		this.id = id;
 		this.przedmiot = przedmiot;
+		this.semestr = semestr;
 	}
 
-	private Object id;
+	private int id;
 
-	public Object getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(Object id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
-	private Object semestr;
+	private String semestr;
 
-	public Object getSemestr() {
+	public String getSemestr() {
 		return semestr;
 	}
 
-	public void setSemestr(Object semestr) {
+	public void setSemestr(String semestr) {
 		this.semestr = semestr;
 	}
 

@@ -19,13 +19,13 @@ public class Prowadzacy extends Pracownik {
 		this.typProwadzacego = typProwadzacego;
 	}
 
-	private Object czyJestKierownikiem;
+	private Boolean czyJestKierownikiem;
 
-	public Object getCzyJestKierownikiem() {
+	public Boolean getCzyJestKierownikiem() {
 		return czyJestKierownikiem;
 	}
 
-	public void setCzyJestKierownikiem(Object czyJestKierownikiem) {
+	public void setCzyJestKierownikiem(Boolean czyJestKierownikiem) {
 		this.czyJestKierownikiem = czyJestKierownikiem;
 	}
 

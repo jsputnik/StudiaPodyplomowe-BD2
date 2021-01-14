@@ -3,23 +3,23 @@ import java.util.Set;
 
 public class Aplikacja {
 	
-	private Object id;
+	private int id;
 
-	public Object getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(Object id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
-	private Object semestr;
+	private String semestr;
 
-	public Object getSemestr() {
+	public String getSemestr() {
 		return semestr;
 	}
 
-	public void setSemestr(Object semestr) {
+	public void setSemestr(String semestr) {
 		this.semestr = semestr;
 	}
 
