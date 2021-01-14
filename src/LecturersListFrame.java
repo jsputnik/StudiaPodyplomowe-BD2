@@ -3,21 +3,32 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
+import java.util.List;
 
 public class LecturersListFrame extends JPanel
 {
     /**
      * Create the panel.
      */
-    public LecturersListFrame(JPanel panel)
+
+    public LecturersListFrame(JPanel panel) throws SQLException
     {
+        PrzypisanieProwadzacychDoRealizacji lecturerList = new PrzypisanieProwadzacychDoRealizacji();
         //setBackground(new Color(176, 224, 230));
         setPreferredSize(new Dimension(640, 360));
         setLayout(null);
 
-        String[] lecturersList = {"Jan Nowak", "Piotr Kowalski", "Adam Wiśniewski", "Maria Wójcik", "Agata Kowalczyk"};// przykładowe, trzeba wziąć listę z bazy
+        List<RealizacjaPrzedmiotu> lecturersList = lecturerList.getListaRealizacji();
+        int count = lecturersList.size();
 
-        JList<String> list = new JList<String>(lecturersList);
+        String[] lecturersList1 = new String[count];
+        for (int i =0; i < count; ++i)
+        {
+            lecturersList1[i] = lecturersList.get(i).getPrzedmiot().getNazwa();
+        }
+
+        JList<String> list = new JList<String>(lecturersList1);
         list.setFont(new Font("Calibri", Font.BOLD, 17));
         //list.setBackground(new Color(176, 224, 230));
         list.setBounds(220, 80, 200, 200);
