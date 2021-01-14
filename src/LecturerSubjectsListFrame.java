@@ -18,6 +18,8 @@ public class LecturerSubjectsListFrame extends JPanel
         setPreferredSize(new Dimension(640, 360));
         setLayout(null);
 
+        List<Prowadzacy> listaProwadzacych = lecturerSujectList.getListaProwadzacych();
+        int num = listaProwadzacych.size();
         List<RealizacjaPrzedmiotu> subjectList = lecturerSujectList.getListaRealizacji();
         int count = subjectList.size();
 
@@ -52,9 +54,11 @@ public class LecturerSubjectsListFrame extends JPanel
             public void actionPerformed(ActionEvent e)
             {
                 CardLayout cardLayout = (CardLayout) panel.getLayout();
-                cardLayout.show(panel, "lecturersList");
-                //tutaj sprawdzamy czy są dostępne prowadzący, jeżeli nie, to
-                // cardLayout.show(panel, "lecturerUnavailable");
+
+                if(num == 0)
+                    cardLayout.show(panel, "lecturerUnavailable");
+                else
+                    cardLayout.show(panel, "lecturersList");
             }
         });
 
