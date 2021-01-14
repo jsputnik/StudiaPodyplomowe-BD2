@@ -1,0 +1,5 @@
+jdbc.url=ora3.elka.pw.edu.pl
+jdbc.username=skisiel
+jdbc.password=skisiel
+jdbc.port=1521
+jdbc.SID=ora3inf
