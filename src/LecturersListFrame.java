@@ -19,13 +19,13 @@ public class LecturersListFrame extends JPanel
         setPreferredSize(new Dimension(640, 360));
         setLayout(null);
 
-        List<RealizacjaPrzedmiotu> lecturersList = lecturerList.getListaRealizacji();
+        List<Prowadzacy> lecturersList = lecturerList.getListaProwadzacych();
         int count = lecturersList.size();
 
         String[] lecturersList1 = new String[count];
         for (int i =0; i < count; ++i)
         {
-            lecturersList1[i] = lecturersList.get(i).getPrzedmiot().getNazwa();
+            lecturersList1[i] = lecturersList.get(i).getImie();
         }
 
         JList<String> list = new JList<String>(lecturersList1);
@@ -53,6 +53,11 @@ public class LecturersListFrame extends JPanel
             {
                 CardLayout cardLayout = (CardLayout) panel.getLayout();
                 cardLayout.show(panel, "lecturerChosen");
+                for(int i = 0; i < lecturersList1.length; ++i)
+                {
+                    if (list.getSelectedValue() == lecturersList1[i])
+                        lecturerList.setProwadzacy(lecturersList.get(i));
+                }
             }
         });
 
