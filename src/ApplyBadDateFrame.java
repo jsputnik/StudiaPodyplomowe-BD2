@@ -16,8 +16,8 @@ public class ApplyBadDateFrame extends JPanel
         setLayout(null);
 
 
-        JLabel majors = new JLabel("Brak możliwoci aplikowania na kierunek");
-        majors.setBounds(150, 150, 350, 47);
+        JLabel majors = new JLabel("Minął okres aplikowania na kierunek");
+        majors.setBounds(170, 150, 350, 47);
         majors.setFont(new Font("Calibri", Font.BOLD, 20));
         add(majors);
 

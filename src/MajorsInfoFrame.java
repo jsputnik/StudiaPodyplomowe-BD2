@@ -14,6 +14,8 @@ public class MajorsInfoFrame extends JPanel
         //setBackground(new Color(176, 224, 230));
         setPreferredSize(new Dimension(640, 360));
         setLayout(null);
+        
+        AplikowanieNaKierunek aplikowanie = new AplikowanieNaKierunek();
 
 
         JLabel majors = new JLabel("Informacja o kierunku");

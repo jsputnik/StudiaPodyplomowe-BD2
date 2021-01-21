@@ -1,4 +1,5 @@
 import javax.swing.*;
+import java.util.List;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -14,10 +15,19 @@ public class MajorsFrame extends JPanel
         //setBackground(new Color(176, 224, 230));
         setPreferredSize(new Dimension(640, 360));
         setLayout(null);
+        
+        AplikowanieNaKierunek aplikowanie = new AplikowanieNaKierunek();
+        
+        List<Kierunek> kierunki = aplikowanie.getlistaKierunkow();
+        int count = kierunki.size();
+        String[] listaKierunkow = new String[count];
 
-        String[] majorsList = {"Informatyka", "Matematyka", "Fizyka", "Chemia", "Astrofizyka"}; //przykładowe, trzeba wziąć liste z bazy
+        for (int i =0; i < count; ++i)
+        {
+            listaKierunkow[i] = kierunki.get(i).getNazwa();
+        }
 
-        JList<String> list = new JList<String>(majorsList);
+        JList<String> list = new JList<String>(listaKierunkow);
         list.setFont(new Font("Calibri", Font.BOLD, 17));
         //list.setBackground(new Color(176, 224, 230));
         list.setBounds(220, 80, 200, 200);
@@ -46,8 +56,15 @@ public class MajorsFrame extends JPanel
             public void actionPerformed(ActionEvent e)
             {
                 CardLayout cardLayout = (CardLayout) panel.getLayout();
-                cardLayout.show(panel, "majorsInfo");
-                //list.getSelectedValue(); do pobrania wybranego kierunku
+                
+                if(aplikowanie.czyAplikowanieWOkresie(list.getSelectedValue())) 
+                {
+                	cardLayout.show(panel, "majorsInfo");
+                }
+                else 
+                {
+                	cardLayout.show(panel,"applyBad");
+                }
             }
         });
         
