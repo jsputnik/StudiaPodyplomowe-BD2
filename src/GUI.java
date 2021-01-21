@@ -54,6 +54,7 @@ public class GUI extends JFrame
         contentPane.add(lecturerChosenFrame, "lecturerChosen");
         contentPane.add(lecturerUnavailableFrame, "lecturerUnavailable");
         
+        
 
 
         setContentPane(contentPane);

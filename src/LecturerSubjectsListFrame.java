@@ -42,6 +42,11 @@ public class LecturerSubjectsListFrame extends JPanel
         subjects.setBounds(170, 25, 300, 47);
         subjects.setFont(new Font("Calibri", Font.BOLD, 20));
         add(subjects);
+        
+        JButton logout = new JButton("Wyloguj");
+        logout.setBounds(565, 0, 75, 30);
+        logout.setFont(new Font("Calibri", Font.BOLD, 12));
+        add(logout);
 
         JButton next = new JButton("Dalej");
         next.setBounds(282, 300, 75, 47);
@@ -64,6 +69,17 @@ public class LecturerSubjectsListFrame extends JPanel
                     if (list.getSelectedValue() == subjectsList1[i])
                         lecturerSubjectList.setRealizacjaPrzedmiotu(subjectList.get(i));
                 }
+            }
+
+        });
+        
+        logout.addActionListener(new ActionListener()
+        {
+            public void actionPerformed(ActionEvent e)
+            {
+                CardLayout cardLayout = (CardLayout) panel.getLayout();
+                    cardLayout.show(panel, "login");
+              
             }
 
         });

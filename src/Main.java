@@ -14,14 +14,7 @@ public class Main
     	
     	try {
     		UIManager.setLookAndFeel(new com.jtattoo.plaf.noire.NoireLookAndFeel());
-//    	for(LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) 
-//    	{
-//    		if("Metal".equals(info.getName())) 
-//    		{
-//    			UIManager.setLookAndFeel(info.getClassName());
-//    			break;
-//    		}
-//    	}
+
     	}
     	catch(Exception e) {}
     	

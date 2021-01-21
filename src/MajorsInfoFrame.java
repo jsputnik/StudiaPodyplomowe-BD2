@@ -32,6 +32,11 @@ public class MajorsInfoFrame extends JPanel
         info.setEditable(false);
         info.setLineWrap(true);
         add(info);
+        
+        JButton logout = new JButton("Wyloguj");
+        logout.setBounds(565, 0, 75, 30);
+        logout.setFont(new Font("Calibri", Font.BOLD, 12));
+        add(logout);
 
         next.addActionListener( new ActionListener()
         {
@@ -42,6 +47,17 @@ public class MajorsInfoFrame extends JPanel
                 // tutaj trzeba sprawdzić okres aplikowania, jeżeli minął, to będzie
                 //cardLayout.show(panel, "applyBad");
             }
+        });
+        
+        logout.addActionListener(new ActionListener()
+        {
+            public void actionPerformed(ActionEvent e)
+            {
+                CardLayout cardLayout = (CardLayout) panel.getLayout();
+                    cardLayout.show(panel, "login");
+              
+            }
+
         });
 
     }

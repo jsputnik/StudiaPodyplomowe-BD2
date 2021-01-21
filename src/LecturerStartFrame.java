@@ -24,6 +24,11 @@ class LecturerStartFrame extends JPanel
         //set component bounds (only needed by Absolute Positioning)
         addLecturer.setBounds(120, 65, 400, 100);
         deleteLecturer.setBounds(120, 215, 400, 100);
+        
+        JButton logout = new JButton("Wyloguj");
+        logout.setBounds(565, 0, 75, 30);
+        logout.setFont(new Font("Calibri", Font.BOLD, 12));
+        add(logout);
 
         addLecturer.addActionListener( new ActionListener()
         {
@@ -41,6 +46,18 @@ class LecturerStartFrame extends JPanel
 
             }
         });
+        
+        logout.addActionListener(new ActionListener()
+        {
+            public void actionPerformed(ActionEvent e)
+            {
+                CardLayout cardLayout = (CardLayout) panel.getLayout();
+                    cardLayout.show(panel, "login");
+              
+            }
+
+        });
+       
 
         //add components
         add(addLecturer);
