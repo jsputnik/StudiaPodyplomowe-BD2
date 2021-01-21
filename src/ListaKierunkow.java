@@ -21,7 +21,8 @@ public class ListaKierunkow {
 	public void znajdzKierunek() {
 	}
 
-	public void dodajKierunek() {
+	public void dodajKierunek(Kierunek nowyKierunek) {
+		this.kierunek.add(nowyKierunek);
 	}
 
 	public void usunKierunek() {

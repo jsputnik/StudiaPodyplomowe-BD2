@@ -1,55 +1,62 @@
 
+import java.util.Date;
 import java.util.Set;
 
 public class Kierunek {
 	
-	private Object id;
+	Kierunek(String nazwa, Date dataRozpoczeciaRekrutacji, Date dataZakonczeniaRekrutacji){
+		this.nazwa = nazwa;
+		this.dataRozpoczeciaRekrutacji = dataRozpoczeciaRekrutacji;
+		this.dataZakonczeniaRekrutacji = dataZakonczeniaRekrutacji;
+	}
+	
+	private int id;
 
-	public Object getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(Object id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
-	private Object nazwa;
+	private String nazwa;
 
-	public Object getNazwa() {
+	public String getNazwa() {
 		return nazwa;
 	}
 
-	public void setNazwa(Object nazwa) {
+	public void setNazwa(String nazwa) {
 		this.nazwa = nazwa;
 	}
 
-	private Object limitMiejsc;
+	private int limitMiejsc;
 
-	public Object getLimitMiejsc() {
+	public int getLimitMiejsc() {
 		return limitMiejsc;
 	}
 
-	public void setLimitMiejsc(Object limitMiejsc) {
+	public void setLimitMiejsc(int limitMiejsc) {
 		this.limitMiejsc = limitMiejsc;
 	}
 
-	private Object dataRozpoczeciaRekrutacji;
+	private Date dataRozpoczeciaRekrutacji;
 
-	public Object getDataRozpoczeciaRekrutacji() {
+	public Date getDataRozpoczeciaRekrutacji() {
 		return dataRozpoczeciaRekrutacji;
 	}
 
-	public void setDataRozpoczeciaRekrutacji(Object dataRozpoczeciaRekrutacji) {
+	public void setDataRozpoczeciaRekrutacji(Date dataRozpoczeciaRekrutacji) {
 		this.dataRozpoczeciaRekrutacji = dataRozpoczeciaRekrutacji;
 	}
 
-	private Object dataZakonczeniaRekrutacji;
+	private Date dataZakonczeniaRekrutacji;
 
-	public Object getDataZakonczeniaRekrutacji() {
+	public Date getDataZakonczeniaRekrutacji() {
 		return dataZakonczeniaRekrutacji;
 	}
 
-	public void setDataZakonczeniaRekrutacji(Object dataZakonczeniaRekrutacji) {
+	public void setDataZakonczeniaRekrutacji(Date dataZakonczeniaRekrutacji) {
 		this.dataZakonczeniaRekrutacji = dataZakonczeniaRekrutacji;
 	}
 
@@ -114,5 +121,9 @@ public class Kierunek {
 	}
 
 	public void dodajKandydata() {
+	}
+	
+	public String toString() {
+		return nazwa;
 	}
 }

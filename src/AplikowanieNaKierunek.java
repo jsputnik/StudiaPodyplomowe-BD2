@@ -1,7 +1,9 @@
 import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -15,11 +17,15 @@ public class AplikowanieNaKierunek {
 			
 			try{
 				connect.setConnection();
-				ResultSet RsKierunki = connect.connectionMakeRead("Select ENAME From EMP");
+				ResultSet RsKierunki = connect.connectionMakeRead("SELECT nazwa, data_rozpoczecia_rekrutacji, data_zakonczenia_rekrutacji "
+						+ "FROM Kierunki");
 				
 				while (RsKierunki.next()) {
-					System.out.println(RsKierunki.getString(1));
+					Kierunek kierunek = new Kierunek(RsKierunki.getString(1), RsKierunki.getDate(2), RsKierunki.getDate(3));
+					this.listaKierunkow.dodajKierunek(kierunek);
 				}
+				
+				
 				
 				connect.closeConnection();
 			}
@@ -45,4 +51,26 @@ public class AplikowanieNaKierunek {
 		
 		return lista;
 	}
+	
+	public Boolean czyAplikowanieWOkresie(String nazwaKierunku) {
+		SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+		
+		List<Kierunek> lista = getlistaKierunkow();
+		int keyId = 0;
+		
+		for(int i=0; i<lista.size(); ++i ) {
+			if(lista.get(i).getNazwa() == nazwaKierunku) {
+				keyId = i;
+			}
+		}
+		
+		Date dataRozpoczecia = lista.get(keyId).getDataRozpoczeciaRekrutacji();
+		Date dataZakonczenia = lista.get(keyId).getDataZakonczeniaRekrutacji();
+		
+		Date dataObecna = new Date();
+		//System.out.println(formatter.format(dataObecna));
+		if(dataObecna.after(dataRozpoczecia) && dataObecna.before(dataZakonczenia) ) return true;
+		else return false;
+	}
+	
 }
