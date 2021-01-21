@@ -35,8 +35,14 @@ class LoginFrame extends JPanel
             public void actionPerformed(ActionEvent e)
             {
                 CardLayout cardLayout = (CardLayout) panel.getLayout();
-                cardLayout.show(panel, "lecturerStart");
-              //cardLayout.show(panel, "start"); //aplikowanie
+                if(login.getText().equals("kandydat"))
+                {
+                	cardLayout.show(panel, "start");
+                }
+                if(login.getText().equals("pracownik")) 
+                {
+                	cardLayout.show(panel, "lecturerStart");
+                }
 
             }
         });

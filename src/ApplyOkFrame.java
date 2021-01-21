@@ -17,12 +17,12 @@ public class ApplyOkFrame extends JPanel
 
 
         JLabel majors = new JLabel("Prośba została zapisana");
-        majors.setBounds(250, 150, 200, 47);
+        majors.setBounds(230, 120, 200, 47);
         majors.setFont(new Font("Calibri", Font.BOLD, 20));
         add(majors);
 
         JButton next = new JButton("Ok");
-        next.setBounds(282, 200, 150, 47);
+        next.setBounds(250, 200, 150, 47);
         next.setFont(new Font("Calibri", Font.BOLD, 17));
         add(next);
 
