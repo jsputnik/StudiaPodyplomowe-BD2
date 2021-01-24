@@ -2,6 +2,8 @@
 import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 public class PracownikAdministracyjny extends Pracownik {
@@ -105,4 +107,44 @@ public class PracownikAdministracyjny extends Pracownik {
 			listaPrzypisowProwadzacychDoRealizacji.dodajPrzypis(przypisProwadzacegoDoRealizacji);
 		
 	}
+	
+	public void przypiszKandydataDoKierunku(int idKandydata, ListaKierunkow listaKierunkow, String nazwaKierunku) {
+		List<Kierunek> lista = new ArrayList<Kierunek>(listaKierunkow.getKierunek());
+		
+		
+		int numerKierunku = 0;
+		Boolean flaga = false;
+		
+		for(int i=0; i<lista.size(); ++i) {
+			if(lista.get(i).getNazwa().equals(nazwaKierunku)) {
+				flaga = true;
+				numerKierunku = i;
+				}
+		}
+		
+		Connections connect = new Connections();
+		
+		int idKierunku = 0;
+		
+		if(flaga) idKierunku = lista.get(numerKierunku).getId();
+		
+		try{
+			connect.setConnection();
+
+			connect.connectionMakeUpdate("INSERT INTO Aplikacje "
+				   + "VALUES (aplikacja_seq.nextval, " + idKandydata + ", " + idKierunku + ", '21L', SYSDATE, ADD_MONTHS(SYSDATE,6))");
+
+			connect.closeConnection();
+		}
+		catch (SQLException eSQL) 
+		{
+			System.out.println("Blad przetwarzania SQL");
+		}
+		catch (IOException eIO) // B³¹d obs³ugi pliku zawieraj¹cego parametry po³¹czenia
+		{
+			System.out.println("Nie mo¿na otworzyæ pliku z parametrami po³¹czenia");
+		}
+		
+	}
+	
 }

@@ -12,16 +12,18 @@ public class AplikowanieNaKierunek {
 	 
 	AplikowanieNaKierunek(){
 		this.listaKierunkow = new ListaKierunkow();
+		
+		pracownikAdministracyjny = new PracownikAdministracyjny();
 		 
 		 Connections connect = new Connections();
 			
 			try{
 				connect.setConnection();
-				ResultSet RsKierunki = connect.connectionMakeRead("SELECT nazwa, data_rozpoczecia_rekrutacji, data_zakonczenia_rekrutacji "
+				ResultSet RsKierunki = connect.connectionMakeRead("SELECT id_kierunku, nazwa, data_rozpoczecia_rekrutacji, data_zakonczenia_rekrutacji "
 						+ "FROM Kierunki");
 				
 				while (RsKierunki.next()) {
-					Kierunek kierunek = new Kierunek(RsKierunki.getString(1), RsKierunki.getDate(2), RsKierunki.getDate(3));
+					Kierunek kierunek = new Kierunek(RsKierunki.getInt(1), RsKierunki.getString(2), RsKierunki.getDate(3), RsKierunki.getDate(4));
 					this.listaKierunkow.dodajKierunek(kierunek);
 				}
 				
@@ -42,6 +44,8 @@ public class AplikowanieNaKierunek {
 	 }
 	
 	private ListaKierunkow listaKierunkow;
+	
+	private PracownikAdministracyjny pracownikAdministracyjny;
 	
 	public List<Kierunek> getlistaKierunkow(){
 		Set<Kierunek> set = new HashSet<Kierunek>();
@@ -71,6 +75,10 @@ public class AplikowanieNaKierunek {
 		//System.out.println(formatter.format(dataObecna));
 		if(dataObecna.after(dataRozpoczecia) && dataObecna.before(dataZakonczenia) ) return true;
 		else return false;
+	}
+	
+	public void przypiszKandydataDoKierunku(int idKandydata, String nazwaKierunku ) {
+		pracownikAdministracyjny.przypiszKandydataDoKierunku(idKandydata, listaKierunkow, nazwaKierunku);
 	}
 	
 }
