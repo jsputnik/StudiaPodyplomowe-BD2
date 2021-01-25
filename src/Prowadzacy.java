@@ -9,6 +9,8 @@ public class Prowadzacy extends Pracownik {
 		this.setNazwisko(nazwisko);
 	}
 	
+	public Prowadzacy() {}
+
 	private Object typProwadzacego;
 
 	public Object getTypProwadzacego() {

@@ -9,6 +9,8 @@ public class RealizacjaPrzedmiotu {
 		this.semestr = semestr;
 	}
 
+	public RealizacjaPrzedmiotu() {}
+
 	private int id;
 
 	public int getId() {

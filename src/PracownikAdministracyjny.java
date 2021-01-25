@@ -147,4 +147,29 @@ public class PracownikAdministracyjny extends Pracownik {
 		
 	}
 	
+	public void usunProwadzacegoZRealizacji(Prowadzacy prowadzacy, RealizacjaPrzedmiotu realizacja) {
+		
+		int idProwadzacego = prowadzacy.getId();
+		int idRealizacji = realizacja.getId();
+		
+		Connections connect = new Connections();
+		
+		try{
+			connect.setConnection();
+
+			connect.connectionMakeUpdate("DELETE FROM Przypisy_prow_do_real WHERE id_pracownika = " + idProwadzacego + " AND id_realizacji = " + idRealizacji);
+
+			connect.closeConnection();
+		}
+		catch (SQLException eSQL) 
+		{
+			System.out.println("Blad przetwarzania SQL");
+		}
+		catch (IOException eIO) // B³¹d obs³ugi pliku zawieraj¹cego parametry po³¹czenia
+		{
+			System.out.println("Nie mo¿na otworzyæ pliku z parametrami po³¹czenia");
+		}
+		
+	}
+	
 }

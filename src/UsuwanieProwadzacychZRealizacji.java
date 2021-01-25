@@ -10,17 +10,28 @@ public class UsuwanieProwadzacychZRealizacji {
 		
 		listaPrzypisowProwadzacychDoRealizacji = new ListaPrzypisowProwadzacychDoRealizacji();
 		
+		pracownikAdministracyjny = new PracownikAdministracyjny();
+		
+		prowadzacy = new Prowadzacy();
+		
+		realizacjaPrzedmiotu = new RealizacjaPrzedmiotu();
+		
 		Connections connect = new Connections();
 		
 		try{
 			connect.setConnection();
 			
-			ResultSet RsPrzypis = connect.connectionMakeRead("SELECT PR.ID_PRACOWNIKA, IMIE, NAZWISKO FROM Prowadzacy Pr JOIN Pracownicy P ON Pr.id_pracownika = P.id_pracownika");
+			ResultSet RsPrzypis = connect.connectionMakeRead("SELECT Rpr.id_realizacji, nazwa, kod_przedmiotu, numer_semestru, P.id_pracownika, imie, nazwisko "
+				+	"FROM Przypisy_prow_do_real PR "
+				+	"JOIN Prowadzacy PT ON PR.id_pracownika = PT.id_pracownika "
+				+	"JOIN Pracownicy P ON PT.id_pracownika = P.id_pracownika "
+				+	"JOIN Realizacje_przedmiotow RPr ON RPr.id_realizacji = PR.id_realizacji "
+				+	"JOIN Przedmioty Pr ON RPr.id_przedmiotu = Pr.id_przedmiotu");
 			
 			while (RsPrzypis.next()) {
-				Prowadzacy prowadzacy = new Prowadzacy(0, "s", "s");
-				Przedmiot przedmiot = new Przedmiot(RsPrzypis.getString(2),  RsPrzypis.getString(4));
-				RealizacjaPrzedmiotu realizacjaPrzedmiotu = new RealizacjaPrzedmiotu(RsPrzypis.getInt(1), przedmiot , RsPrzypis.getString(3));
+				Prowadzacy prowadzacy = new Prowadzacy(RsPrzypis.getInt(5), RsPrzypis.getString(6), RsPrzypis.getString(7));
+				Przedmiot przedmiot = new Przedmiot(RsPrzypis.getString(2),  RsPrzypis.getString(3));
+				RealizacjaPrzedmiotu realizacjaPrzedmiotu = new RealizacjaPrzedmiotu(RsPrzypis.getInt(1), przedmiot , RsPrzypis.getString(4));
 				PrzypisProwadzacegoDoRealizacji przypisProwadzacegoDoRealizacji = new PrzypisProwadzacegoDoRealizacji(prowadzacy, realizacjaPrzedmiotu);
 				listaPrzypisowProwadzacychDoRealizacji.dodajPrzypis(przypisProwadzacegoDoRealizacji);
 			}
@@ -40,13 +51,37 @@ public class UsuwanieProwadzacychZRealizacji {
 	
 	private ListaPrzypisowProwadzacychDoRealizacji listaPrzypisowProwadzacychDoRealizacji;
 	
-	public List<PrzypisProwadzacegoDoRealizacji> getListaPrzypisowProwadzacychDoRealizacji(){
+	private PracownikAdministracyjny pracownikAdministracyjny;
+
+	private Prowadzacy prowadzacy;
+
+	private RealizacjaPrzedmiotu realizacjaPrzedmiotu;
+	
+	public List<Prowadzacy> getListaProwadzacychDlaRealizacji(String nazwaPrzedmiotu){
 		List<PrzypisProwadzacegoDoRealizacji> lista = new ArrayList<PrzypisProwadzacegoDoRealizacji>(listaPrzypisowProwadzacychDoRealizacji.getPrzypisProwadzacegoDoRealizacji());
-		return lista;
+		
+		List<Prowadzacy> listaDlaRealizacji = new ArrayList<Prowadzacy>();
+				
+		for(int i=0; i<lista.size(); ++i) {
+			if(lista.get(i).getRealizacjaPrzedmiotu().getPrzedmiot().getNazwa().equals(nazwaPrzedmiotu))
+				listaDlaRealizacji.add(lista.get(i).getProwadzacy());
+		}
+		
+		return listaDlaRealizacji;
 	}
 	
-	public void usunProwadzacegoZRealizacji() {
-		
+	public void usuwanieProwadzacegoZRealizacji() {
+		pracownikAdministracyjny.usunProwadzacegoZRealizacji(this.prowadzacy, this.realizacjaPrzedmiotu);
+	}
+
+	public void setProwadzacy(Prowadzacy prowadzacy)
+	{
+		this.prowadzacy = prowadzacy;
+	}
+
+	public void setRealizacjaPrzedmiotu(RealizacjaPrzedmiotu realizacjaPrzedmiotu)
+	{
+		this.realizacjaPrzedmiotu = realizacjaPrzedmiotu;
 	}
 
 }
