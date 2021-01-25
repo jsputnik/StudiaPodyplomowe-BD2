@@ -4,7 +4,8 @@ import java.util.Set;
 
 public class Kierunek {
 	
-	Kierunek(String nazwa, Date dataRozpoczeciaRekrutacji, Date dataZakonczeniaRekrutacji){
+	Kierunek(int id, String nazwa, Date dataRozpoczeciaRekrutacji, Date dataZakonczeniaRekrutacji){
+		this.id = id;
 		this.nazwa = nazwa;
 		this.dataRozpoczeciaRekrutacji = dataRozpoczeciaRekrutacji;
 		this.dataZakonczeniaRekrutacji = dataZakonczeniaRekrutacji;

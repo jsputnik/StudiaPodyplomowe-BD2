@@ -2,7 +2,14 @@
 import java.util.Set;
 
 public class PrzypisProwadzacegoDoRealizacji {
+	
+	PrzypisProwadzacegoDoRealizacji(){};
 
+	PrzypisProwadzacegoDoRealizacji(Prowadzacy prowadzacy, RealizacjaPrzedmiotu realizacjaPrzedmiotu){
+		this.prowadzacy = prowadzacy;
+		this.realizacjaPrzedmiotu = realizacjaPrzedmiotu;
+	}
+	
 	private int id;
 
 	public int getId() {
@@ -53,4 +60,9 @@ public class PrzypisProwadzacegoDoRealizacji {
 	public void setProwadzacy(Prowadzacy prowadzacy) {
 		this.prowadzacy = prowadzacy;
 	}
+	
+	public String toString() {
+		return prowadzacy.getImie() + " " + prowadzacy.getNazwisko() + " " + realizacjaPrzedmiotu.getPrzedmiot().getNazwa();
+	}
+	
 }
