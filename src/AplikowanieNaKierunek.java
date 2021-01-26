@@ -14,7 +14,6 @@ public class AplikowanieNaKierunek {
 		this.listaKierunkow = new ListaKierunkow();
 		
 		pracownikAdministracyjny = new PracownikAdministracyjny();
-		kierunek = new Kierunek();
 		 
 		 Connections connect = new Connections();
 			
@@ -36,19 +35,19 @@ public class AplikowanieNaKierunek {
 			{
 				System.out.println("Blad przetwarzania SQL");
 			}
-			catch (IOException eIO) // B≈Ç≈°d obs≈Çugi pliku zawieraj≈°cego parametry po≈Ç≈°czenia
+			catch (IOException eIO) // B≥πd obs≥ugi pliku zawierajπcego parametry po≥πczenia
 			{
-				System.out.println("Nie mo≈ºna otworzyƒá pliku z parametrami po≈Ç≈°czenia");
+				System.out.println("Nie moøna otworzyÊ pliku z parametrami po≥πczenia");
 			}
 		 
 		 
 	 }
 	
-	private Kierunek kierunek;
-	
 	private ListaKierunkow listaKierunkow;
 	
 	private PracownikAdministracyjny pracownikAdministracyjny;
+	
+	private Kierunek kierunek;
 	
 	public List<Kierunek> getlistaKierunkow(){
 		Set<Kierunek> set = new HashSet<Kierunek>();
@@ -80,18 +79,43 @@ public class AplikowanieNaKierunek {
 		else return false;
 	}
 	
-	public void przypiszKandydataDoKierunku(int idKandydata) {
-		pracownikAdministracyjny.przypiszKandydataDoKierunku(idKandydata, listaKierunkow, kierunek.getNazwa());
+	public void przypiszKandydataDoKierunku(int idKandydata, String nazwaKierunku ) {
+		pracownikAdministracyjny.przypiszKandydataDoKierunku(idKandydata, listaKierunkow, nazwaKierunku);
 	}
 	
-	public void setKierunek(Kierunek kierunek) 
-	{
+	
+	public void setKierunek(Kierunek kierunek ) {
 		this.kierunek = kierunek;
 	}
 	
-	public Kierunek getKierunek() 
-	{
-		return this.kierunek;
+	public void update() {
+		Connections connect = new Connections();
+		
+		listaKierunkow.setKierunek(new HashSet<Kierunek>());
+		
+		try{
+			connect.setConnection();
+			ResultSet RsKierunki = connect.connectionMakeRead("SELECT id_kierunku, nazwa, data_rozpoczecia_rekrutacji, data_zakonczenia_rekrutacji "
+					+ "FROM Kierunki");
+			
+			while (RsKierunki.next()) {
+				Kierunek kierunek = new Kierunek(RsKierunki.getInt(1), RsKierunki.getString(2), RsKierunki.getDate(3), RsKierunki.getDate(4));
+				this.listaKierunkow.dodajKierunek(kierunek);
+			}
+			
+			
+			
+			connect.closeConnection();
+		}
+		catch (SQLException eSQL) 
+		{
+			System.out.println("Blad przetwarzania SQL");
+		}
+		catch (IOException eIO) // B≥πd obs≥ugi pliku zawierajπcego parametry po≥πczenia
+		{
+			System.out.println("Nie moøna otworzyÊ pliku z parametrami po≥πczenia");
+		}
+	 
 	}
 	
 }

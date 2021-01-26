@@ -16,7 +16,8 @@ public class ListaAplikacji {
 	public void znajdzAplikacje() {
 	}
 
-	public void dodajAplikacje() {
+	public void dodajAplikacje(Aplikacja aplikacja) {
+		this.aplikacja.add(aplikacja);
 	}
 
 	public void usunAplikacje() {

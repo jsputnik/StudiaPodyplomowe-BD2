@@ -1,3 +1,4 @@
+
 import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -98,9 +99,9 @@ public class PracownikAdministracyjny extends Pracownik {
 		{
 			System.out.println("Blad przetwarzania SQL");
 		}
-		catch (IOException eIO) // B≈Ç≈°d obs≈Çugi pliku zawieraj≈°cego parametry po≈Ç≈°czenia
+		catch (IOException eIO) // B≥πd obs≥ugi pliku zawierajπcego parametry po≥πczenia
 		{
-			System.out.println("Nie mo≈ºna otworzyƒá pliku z parametrami po≈Ç≈°czenia");
+			System.out.println("Nie moøna otworzyÊ pliku z parametrami po≥πczenia");
 		}
 			
 			listaPrzypisowProwadzacychDoRealizacji.dodajPrzypis(przypisProwadzacegoDoRealizacji);
@@ -139,9 +140,9 @@ public class PracownikAdministracyjny extends Pracownik {
 		{
 			System.out.println("Blad przetwarzania SQL");
 		}
-		catch (IOException eIO) // B≈Ç≈°d obs≈Çugi pliku zawieraj≈°cego parametry po≈Ç≈°czenia
+		catch (IOException eIO) // B≥πd obs≥ugi pliku zawierajπcego parametry po≥πczenia
 		{
-			System.out.println("Nie mo≈ºna otworzyƒá pliku z parametrami po≈Ç≈°czenia");
+			System.out.println("Nie moøna otworzyÊ pliku z parametrami po≥πczenia");
 		}
 		
 	}
@@ -164,11 +165,32 @@ public class PracownikAdministracyjny extends Pracownik {
 		{
 			System.out.println("Blad przetwarzania SQL");
 		}
-		catch (IOException eIO) // B≈Ç≈°d obs≈Çugi pliku zawieraj≈°cego parametry po≈Ç≈°czenia
+		catch (IOException eIO) 
 		{
-			System.out.println("Nie mo≈ºna otworzyƒá pliku z parametrami po≈Ç≈°czenia");
+			System.out.println("Nie moøna otworzyÊ pliku z parametrami po≥πczenia");
 		}
 		
+	}
+	
+	public void rezygnujZAplikowania(int idKandydata, int idKierunku) {
+		
+		Connections connect = new Connections();
+		
+		try{
+			connect.setConnection();
+
+			connect.connectionMakeUpdate("DELETE FROM Aplikacje WHERE id_kandydata =  " + idKandydata + " AND id_kierunku = " + idKierunku);
+
+			connect.closeConnection();
+		}
+		catch (SQLException eSQL) 
+		{
+			System.out.println("Blad przetwarzania SQL");
+		}
+		catch (IOException eIO) 
+		{
+			System.out.println("Nie moøna otworzyÊ pliku z parametrami po≥πczenia");
+		}
 	}
 	
 }
