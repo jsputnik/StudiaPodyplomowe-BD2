@@ -4,31 +4,31 @@ import java.sql.SQLException;
 
 public class GUI extends JFrame
 {
-    private final JPanel contentPane;
-    private final WyborUzytkownika wyborUzytkownika;
-    private final LoginKandydat loginKandydat;
-    private final LoginStudent loginStudent;
-    private final LoginPracownik loginPracownik;
-    private final LoginFrame loginFrame;
-    private final ApplyStartFrame startFrame;
-    private final MajorsFrame majorsFrame;
-    private final MajorsInfoFrame majorsInfoFrame;
-    private final ApplyOkFrame applyOkFrame;
-    private final ApplyBadDateFrame applyBadDateFrame;
-    private final LecturerStartFrame lecturerStartFrame;
-    private final LecturerSubjectsListFrame lecturerSubjectsListFrame;
-    private final LecturersListFrame lecturersListFrame;
-    private final LecturerChosenFrame lecturerChosenFrame;
-    private final LecturerUnavailableFrame lecturerUnavailableFrame;
-    private final UsuniecieProwadzacegoListaPrzedmiotowOkno usuniecieProwadzacegoListaPrzedmiotow;
-    private final UsuniecieProwadzacegoListaProwadzacychOkno usuniecieProwadzacegoListaProwadzacych;
-    private final ProwadzacyUsunietyOkno prowadzacyUsunietyOkno;
-    private final NieMaProwadzacychPrzypisanychDoRealizacji nieMaProwadzacychPrzypisanychDoRealizacji;
+    private JPanel contentPane;
+    private WyborUzytkownika wyborUzytkownika;
+    private LoginKandydat loginKandydat;
+    private LoginStudent loginStudent;
+    private LoginPracownik loginPracownik;
+    private LoginFrame loginFrame;
+    private ApplyStartFrame startFrame;
+    private MajorsFrame majorsFrame;
+    //private MajorsInfoFrame majorsInfoFrame;
+    private ApplyOkFrame applyOkFrame;
+    private ApplyBadDateFrame applyBadDateFrame;
+    private LecturerStartFrame lecturerStartFrame;
+    private LecturerSubjectsListFrame lecturerSubjectsListFrame;
+    private LecturersListFrame lecturersListFrame;
+    private LecturerChosenFrame lecturerChosenFrame;
+    private LecturerUnavailableFrame lecturerUnavailableFrame;
+    private UsuniecieProwadzacegoListaPrzedmiotowOkno usuniecieProwadzacegoListaPrzedmiotow;
+    //private final UsuniecieProwadzacegoListaProwadzacychOkno usuniecieProwadzacegoListaProwadzacych;
+    private ProwadzacyUsunietyOkno prowadzacyUsunietyOkno;
+    private NieMaProwadzacychPrzypisanychDoRealizacji nieMaProwadzacychPrzypisanychDoRealizacji;
     
     
-    private final PrzypisanieProwadzacychDoRealizacji przypisanieProwadzacychDoRealizacji;
-    private final UsuwanieProwadzacychZRealizacji usuwanieProwadzacychZRealizacji;
-    private final AplikowanieNaKierunek aplikowanieNaKierunek;
+    private PrzypisanieProwadzacychDoRealizacji przypisanieProwadzacychDoRealizacji;
+    private UsuwanieProwadzacychZRealizacji usuwanieProwadzacychZRealizacji;
+    private AplikowanieNaKierunek aplikowanieNaKierunek;
 
     public GUI() throws SQLException
     {
@@ -43,17 +43,17 @@ public class GUI extends JFrame
         loginFrame = new LoginFrame(contentPane);
         startFrame = new ApplyStartFrame(contentPane);
         majorsFrame = new MajorsFrame(contentPane, aplikowanieNaKierunek);
-        majorsInfoFrame = new MajorsInfoFrame(contentPane, aplikowanieNaKierunek);
+        //majorsInfoFrame = new MajorsInfoFrame(contentPane, aplikowanieNaKierunek);
         applyOkFrame = new ApplyOkFrame(contentPane);
         applyBadDateFrame = new ApplyBadDateFrame(contentPane);
 
         lecturerStartFrame = new LecturerStartFrame(contentPane);
         lecturerSubjectsListFrame = new LecturerSubjectsListFrame(contentPane, przypisanieProwadzacychDoRealizacji);
-        lecturersListFrame = new LecturersListFrame(contentPane, przypisanieProwadzacychDoRealizacji);
+        lecturersListFrame = new LecturersListFrame(contentPane, przypisanieProwadzacychDoRealizacji, usuwanieProwadzacychZRealizacji);
         lecturerChosenFrame = new LecturerChosenFrame(contentPane);
         lecturerUnavailableFrame = new LecturerUnavailableFrame(contentPane);
         
-        usuniecieProwadzacegoListaProwadzacych = new UsuniecieProwadzacegoListaProwadzacychOkno(contentPane, usuwanieProwadzacychZRealizacji);
+        //usuniecieProwadzacegoListaProwadzacych = new UsuniecieProwadzacegoListaProwadzacychOkno(contentPane, usuwanieProwadzacychZRealizacji);
         usuniecieProwadzacegoListaPrzedmiotow = new UsuniecieProwadzacegoListaPrzedmiotowOkno(contentPane, usuwanieProwadzacychZRealizacji);
         prowadzacyUsunietyOkno = new ProwadzacyUsunietyOkno(contentPane);
         nieMaProwadzacychPrzypisanychDoRealizacji = new NieMaProwadzacychPrzypisanychDoRealizacji(contentPane);
@@ -70,7 +70,7 @@ public class GUI extends JFrame
         contentPane.add(loginFrame, "login");
         contentPane.add(startFrame, "start");
         contentPane.add(majorsFrame, "majors");
-        contentPane.add(majorsInfoFrame, "majorsInfo");
+        //contentPane.add(majorsInfoFrame, "majorsInfo");
         contentPane.add(applyOkFrame, "applyOk");
         contentPane.add(applyBadDateFrame, "applyBad");
         contentPane.add(lecturerStartFrame, "lecturerStart");
@@ -79,7 +79,7 @@ public class GUI extends JFrame
         contentPane.add(lecturerChosenFrame, "lecturerChosen");
         contentPane.add(lecturerUnavailableFrame, "lecturerUnavailable");
         contentPane.add(usuniecieProwadzacegoListaPrzedmiotow, "usunieciePrzedmioty");
-        contentPane.add(usuniecieProwadzacegoListaProwadzacych, "usuniecieProwadzacy");
+        //contentPane.add(usuniecieProwadzacegoListaProwadzacych, "usuniecieProwadzacy");
         contentPane.add(prowadzacyUsunietyOkno, "usuniety");
         contentPane.add(nieMaProwadzacychPrzypisanychDoRealizacji,"nieMaProwadzacych");
         

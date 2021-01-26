@@ -12,7 +12,7 @@ public class LecturersListFrame extends JPanel
      * Create the panel.
      */
 
-    public LecturersListFrame(JPanel panel, PrzypisanieProwadzacychDoRealizacji lecturerList) throws SQLException
+    public LecturersListFrame(JPanel panel, PrzypisanieProwadzacychDoRealizacji lecturerList, UsuwanieProwadzacychZRealizacji usuwanie) throws SQLException
     {
         //setBackground(new Color(176, 224, 230));
         setPreferredSize(new Dimension(640, 360));
@@ -64,6 +64,8 @@ public class LecturersListFrame extends JPanel
                         lecturerList.przypisanie();
                     }
                 }
+                lecturerList.update();
+                usuwanie.update();
             }
         });
         
@@ -72,7 +74,7 @@ public class LecturersListFrame extends JPanel
             public void actionPerformed(ActionEvent e)
             {
                 CardLayout cardLayout = (CardLayout) panel.getLayout();
-                    cardLayout.show(panel, "login");
+                    cardLayout.show(panel, "wybor");
               
             }
 

@@ -9,8 +9,7 @@ public class WyborUzytkownika extends JPanel
     public WyborUzytkownika(JPanel panel)
     {
 
-        setPreferredSize(new Dimension(320, 320));
-        setSize(320, 320);
+        setPreferredSize(new Dimension(640, 360));
         setLayout(null);
 
         JButton btnNewButton_1 = new JButton("Pracownik");
@@ -21,7 +20,7 @@ public class WyborUzytkownika extends JPanel
             }
         });
         btnNewButton_1.setFont(new Font("Tahoma", Font.PLAIN, 15));
-        btnNewButton_1.setBounds(40, 152, 112, 53);
+        btnNewButton_1.setBounds(131, 192, 130, 62);
         add(btnNewButton_1);
 
         JButton btnNewButton_2 = new JButton("Student");
@@ -32,7 +31,7 @@ public class WyborUzytkownika extends JPanel
                 cardLayout.show(panel, "loginStudent");
             }
         });
-        btnNewButton_2.setBounds(164, 99, 112, 53);
+        btnNewButton_2.setBounds(255, 119, 130, 62);
         add(btnNewButton_2);
 
         JButton btnNewButton = new JButton("Kandydat");
@@ -43,13 +42,13 @@ public class WyborUzytkownika extends JPanel
             }
         });
         btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 15));
-        btnNewButton.setBounds(287, 152, 112, 53);
+        btnNewButton.setBounds(378, 192, 130, 62);
         add(btnNewButton);
 
         JLabel lblNewLabel = new JLabel("Wybór użytkownika");
         lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-        lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 17));
-        lblNewLabel.setBounds(122, 23, 187, 66);
+        lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 20));
+        lblNewLabel.setBounds(226, 23, 187, 66);
         add(lblNewLabel);
     }
 }

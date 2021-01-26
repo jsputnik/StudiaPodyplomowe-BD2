@@ -53,7 +53,7 @@ class LecturerStartFrame extends JPanel
             public void actionPerformed(ActionEvent e)
             {
                 CardLayout cardLayout = (CardLayout) panel.getLayout();
-                    cardLayout.show(panel, "login");
+                    cardLayout.show(panel, "wybor");
               
             }
 

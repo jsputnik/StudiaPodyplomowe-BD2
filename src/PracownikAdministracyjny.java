@@ -1,4 +1,3 @@
-
 import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -99,9 +98,9 @@ public class PracownikAdministracyjny extends Pracownik {
 		{
 			System.out.println("Blad przetwarzania SQL");
 		}
-		catch (IOException eIO) // B≥πd obs≥ugi pliku zawierajπcego parametry po≥πczenia
+		catch (IOException eIO) // B≈Ç≈°d obs≈Çugi pliku zawieraj≈°cego parametry po≈Ç≈°czenia
 		{
-			System.out.println("Nie moøna otworzyÊ pliku z parametrami po≥πczenia");
+			System.out.println("Nie mo≈ºna otworzyƒá pliku z parametrami po≈Ç≈°czenia");
 		}
 			
 			listaPrzypisowProwadzacychDoRealizacji.dodajPrzypis(przypisProwadzacegoDoRealizacji);
@@ -140,9 +139,9 @@ public class PracownikAdministracyjny extends Pracownik {
 		{
 			System.out.println("Blad przetwarzania SQL");
 		}
-		catch (IOException eIO) // B≥πd obs≥ugi pliku zawierajπcego parametry po≥πczenia
+		catch (IOException eIO) // B≈Ç≈°d obs≈Çugi pliku zawieraj≈°cego parametry po≈Ç≈°czenia
 		{
-			System.out.println("Nie moøna otworzyÊ pliku z parametrami po≥πczenia");
+			System.out.println("Nie mo≈ºna otworzyƒá pliku z parametrami po≈Ç≈°czenia");
 		}
 		
 	}
@@ -165,9 +164,9 @@ public class PracownikAdministracyjny extends Pracownik {
 		{
 			System.out.println("Blad przetwarzania SQL");
 		}
-		catch (IOException eIO) // B≥πd obs≥ugi pliku zawierajπcego parametry po≥πczenia
+		catch (IOException eIO) // B≈Ç≈°d obs≈Çugi pliku zawieraj≈°cego parametry po≈Ç≈°czenia
 		{
-			System.out.println("Nie moøna otworzyÊ pliku z parametrami po≥πczenia");
+			System.out.println("Nie mo≈ºna otworzyƒá pliku z parametrami po≈Ç≈°czenia");
 		}
 		
 	}

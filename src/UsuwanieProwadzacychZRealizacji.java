@@ -121,4 +121,12 @@ public class UsuwanieProwadzacychZRealizacji {
 		
 	}
 
+	
+	public RealizacjaPrzedmiotu getRealizacjaPrzedmiotu() 
+	{
+		return this.realizacjaPrzedmiotu;
+	}
+
 }
+
+	

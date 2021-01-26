@@ -9,8 +9,8 @@ public class Main
 {
     public static void main(String[] args) throws SQLException
     {
-    	PrzypadkiUzycia przypadki = new PrzypadkiUzycia();
-    	przypadki.PrzypisanieProwadzacychDoRealizacji();
+//    	PrzypadkiUzycia przypadki = new PrzypadkiUzycia();
+//    	przypadki.PrzypisanieProwadzacychDoRealizacji();
     	
     	try {
     		UIManager.setLookAndFeel(new com.jtattoo.plaf.noire.NoireLookAndFeel());

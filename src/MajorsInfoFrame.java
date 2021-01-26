@@ -29,7 +29,8 @@ public class MajorsInfoFrame extends JPanel
         next.setFont(new Font("Calibri", Font.BOLD, 17));
         add(next);
 
-        JTextArea info = new JTextArea("Wybrany kierunek: " + aplikowanie.getKierunek().getNazwa() + "\n");
+        JTextArea info = new JTextArea("Wybrany kierunek:\n");
+        info.append(aplikowanie.getKierunek().getNazwa() + "\n");
         info.append("Limit miejsc: " + String.valueOf(num));
         info.setBounds(240, 80, 200, 200);
         info.setFont(new Font("Calibri", Font.BOLD, 17));
@@ -57,7 +58,7 @@ public class MajorsInfoFrame extends JPanel
             public void actionPerformed(ActionEvent e)
             {
                 CardLayout cardLayout = (CardLayout) panel.getLayout();
-                    cardLayout.show(panel, "login");
+                    cardLayout.show(panel, "wybor");
               
             }
 

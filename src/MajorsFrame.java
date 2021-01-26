@@ -56,6 +56,21 @@ public class MajorsFrame extends JPanel
             {
                 CardLayout cardLayout = (CardLayout) panel.getLayout();
                 
+                for(int i = 0; i < listaKierunkow.length; ++i)
+                {
+                    if (list.getSelectedValue() == listaKierunkow[i])
+                        aplikowanie.setKierunek(kierunki.get(i));
+                }
+                try
+				{
+					MajorsInfoFrame majorsInfoFrame = new MajorsInfoFrame(panel, aplikowanie);
+					panel.add(majorsInfoFrame, "majorsInfo");
+				} catch (SQLException e1)
+				{
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+                
                 if(aplikowanie.czyAplikowanieWOkresie(list.getSelectedValue())) 
                 {
                 	cardLayout.show(panel, "majorsInfo");
@@ -64,6 +79,7 @@ public class MajorsFrame extends JPanel
                 {
                 	cardLayout.show(panel,"applyBad");
                 }
+                
             }
         });
         
@@ -72,7 +88,7 @@ public class MajorsFrame extends JPanel
             public void actionPerformed(ActionEvent e)
             {
                 CardLayout cardLayout = (CardLayout) panel.getLayout();
-                    cardLayout.show(panel, "login");
+                    cardLayout.show(panel, "wybor");
               
             }
 

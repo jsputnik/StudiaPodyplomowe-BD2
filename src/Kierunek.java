@@ -1,4 +1,3 @@
-
 import java.util.Date;
 import java.util.Set;
 
@@ -11,6 +10,11 @@ public class Kierunek {
 		this.dataZakonczeniaRekrutacji = dataZakonczeniaRekrutacji;
 	}
 	
+	public Kierunek()
+	{
+		// TODO Auto-generated constructor stub
+	}
+
 	private int id;
 
 	public int getId() {

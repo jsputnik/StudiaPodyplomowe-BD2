@@ -1,4 +1,3 @@
-
 import java.util.Set;
 
 public class RealizacjaPrzedmiotu {
@@ -9,7 +8,10 @@ public class RealizacjaPrzedmiotu {
 		this.semestr = semestr;
 	}
 
-	public RealizacjaPrzedmiotu() {}
+	public RealizacjaPrzedmiotu() 
+	{
+		przedmiot = new Przedmiot();
+	}
 
 	private int id;
 

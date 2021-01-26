@@ -8,6 +8,11 @@ public class Przedmiot {
 		this.nazwa = nazwa;
 	}
 
+	public Przedmiot()
+	{
+		// TODO Auto-generated constructor stub
+	}
+
 	private int id;
 
 	public int getId() {

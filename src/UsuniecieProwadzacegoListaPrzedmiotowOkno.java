@@ -63,6 +63,23 @@ public class UsuniecieProwadzacegoListaPrzedmiotowOkno extends JPanel
 	            {
 	                CardLayout cardLayout = (CardLayout) panel.getLayout();
 	                
+	                for(int i = 0; i < subjectsList1.length; ++i)
+	                {
+	                    if (list.getSelectedValue().equals(subjectsList1[i]))
+	                        usuZRealizacji.setRealizacjaPrzedmiotu(lista.get(i));
+	                    	
+	                } 
+	                
+	                try
+					{
+						UsuniecieProwadzacegoListaProwadzacychOkno listaProwadzacychOkno = new UsuniecieProwadzacegoListaProwadzacychOkno(panel, usuZRealizacji);
+						panel.add(listaProwadzacychOkno, "usuniecieProwadzacy");
+					} catch (SQLException e1)
+					{
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+	                
 	                List<Prowadzacy> listaProwadzacych = usuZRealizacji.getListaProwadzacychDlaRealizacji(list.getSelectedValue());
 	            	int num = listaProwadzacych.size();
 	                
@@ -71,11 +88,7 @@ public class UsuniecieProwadzacegoListaPrzedmiotowOkno extends JPanel
 	                else
 	                    cardLayout.show(panel, "usuniecieProwadzacy");
 
-	                for(int i = 0; i < subjectsList1.length; ++i)
-	                {
-	                    if (list.getSelectedValue() == subjectsList1[i])
-	                        usuZRealizacji.setRealizacjaPrzedmiotu(lista.get(i));
-	                }
+	                           
 
 	                
 	            }
@@ -87,7 +100,7 @@ public class UsuniecieProwadzacegoListaPrzedmiotowOkno extends JPanel
 	            public void actionPerformed(ActionEvent e)
 	            {
 	                CardLayout cardLayout = (CardLayout) panel.getLayout();
-	                    cardLayout.show(panel, "login");
+	                    cardLayout.show(panel, "wybor");
 	              
 	            }
 

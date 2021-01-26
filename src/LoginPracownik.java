@@ -9,7 +9,7 @@ class LoginPracownik extends JPanel
     {
         //construct components
         JTextField login = new JTextField();
-        JLabel login_label = new JLabel("Imię i Nazwisko");
+        JLabel login_label = new JLabel("PESEL");
         JLabel password_label = new JLabel("Haslo");
         JButton login_button = new JButton("Zaloguj");
         JPasswordField password = new JPasswordField();

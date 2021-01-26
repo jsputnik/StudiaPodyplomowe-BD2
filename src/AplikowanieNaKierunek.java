@@ -14,6 +14,7 @@ public class AplikowanieNaKierunek {
 		this.listaKierunkow = new ListaKierunkow();
 		
 		pracownikAdministracyjny = new PracownikAdministracyjny();
+		kierunek = new Kierunek();
 		 
 		 Connections connect = new Connections();
 			
@@ -35,13 +36,15 @@ public class AplikowanieNaKierunek {
 			{
 				System.out.println("Blad przetwarzania SQL");
 			}
-			catch (IOException eIO) // B≥πd obs≥ugi pliku zawierajπcego parametry po≥πczenia
+			catch (IOException eIO) // B≈Ç≈°d obs≈Çugi pliku zawieraj≈°cego parametry po≈Ç≈°czenia
 			{
-				System.out.println("Nie moøna otworzyÊ pliku z parametrami po≥πczenia");
+				System.out.println("Nie mo≈ºna otworzyƒá pliku z parametrami po≈Ç≈°czenia");
 			}
 		 
 		 
 	 }
+	
+	private Kierunek kierunek;
 	
 	private ListaKierunkow listaKierunkow;
 	
@@ -77,8 +80,18 @@ public class AplikowanieNaKierunek {
 		else return false;
 	}
 	
-	public void przypiszKandydataDoKierunku(int idKandydata, String nazwaKierunku ) {
-		pracownikAdministracyjny.przypiszKandydataDoKierunku(idKandydata, listaKierunkow, nazwaKierunku);
+	public void przypiszKandydataDoKierunku(int idKandydata) {
+		pracownikAdministracyjny.przypiszKandydataDoKierunku(idKandydata, listaKierunkow, kierunek.getNazwa());
+	}
+	
+	public void setKierunek(Kierunek kierunek) 
+	{
+		this.kierunek = kierunek;
+	}
+	
+	public Kierunek getKierunek() 
+	{
+		return this.kierunek;
 	}
 	
 }
