@@ -3,19 +3,20 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 
 public class MajorsInfoFrame extends JPanel
 {
     /**
      * Create the panel.
      */
-    public MajorsInfoFrame(JPanel panel)
+    public MajorsInfoFrame(JPanel panel, AplikowanieNaKierunek aplikowanie) throws SQLException
     {
         //setBackground(new Color(176, 224, 230));
         setPreferredSize(new Dimension(640, 360));
         setLayout(null);
         
-        AplikowanieNaKierunek aplikowanie = new AplikowanieNaKierunek();
+        int num = aplikowanie.getKierunek().getLimitMiejsc();
 
 
         JLabel majors = new JLabel("Informacja o kierunku");
@@ -28,7 +29,8 @@ public class MajorsInfoFrame extends JPanel
         next.setFont(new Font("Calibri", Font.BOLD, 17));
         add(next);
 
-        JTextArea info = new JTextArea("Informacja o kierunku");
+        JTextArea info = new JTextArea("Wybrany kierunek: " + aplikowanie.getKierunek().getNazwa() + "\n");
+        info.append("Limit miejsc: " + String.valueOf(num));
         info.setBounds(240, 80, 200, 200);
         info.setFont(new Font("Calibri", Font.BOLD, 17));
         info.setEditable(false);
@@ -46,8 +48,7 @@ public class MajorsInfoFrame extends JPanel
             {
                 CardLayout cardLayout = (CardLayout) panel.getLayout();
                 cardLayout.show(panel, "applyOk");
-                // tutaj trzeba sprawdzić okres aplikowania, jeżeli minął, to będzie
-                //cardLayout.show(panel, "applyBad");
+                //aplikowanie.przypiszKandydataDoKierunku();
             }
         });
         

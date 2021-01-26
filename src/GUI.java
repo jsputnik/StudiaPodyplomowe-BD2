@@ -5,6 +5,10 @@ import java.sql.SQLException;
 public class GUI extends JFrame
 {
     private final JPanel contentPane;
+    private final WyborUzytkownika wyborUzytkownika;
+    private final LoginKandydat loginKandydat;
+    private final LoginStudent loginStudent;
+    private final LoginPracownik loginPracownik;
     private final LoginFrame loginFrame;
     private final ApplyStartFrame startFrame;
     private final MajorsFrame majorsFrame;
@@ -16,18 +20,30 @@ public class GUI extends JFrame
     private final LecturersListFrame lecturersListFrame;
     private final LecturerChosenFrame lecturerChosenFrame;
     private final LecturerUnavailableFrame lecturerUnavailableFrame;
+    private final UsuniecieProwadzacegoListaPrzedmiotowOkno usuniecieProwadzacegoListaPrzedmiotow;
+    private final UsuniecieProwadzacegoListaProwadzacychOkno usuniecieProwadzacegoListaProwadzacych;
+    private final ProwadzacyUsunietyOkno prowadzacyUsunietyOkno;
+    private final NieMaProwadzacychPrzypisanychDoRealizacji nieMaProwadzacychPrzypisanychDoRealizacji;
     
     
     private final PrzypisanieProwadzacychDoRealizacji przypisanieProwadzacychDoRealizacji;
+    private final UsuwanieProwadzacychZRealizacji usuwanieProwadzacychZRealizacji;
+    private final AplikowanieNaKierunek aplikowanieNaKierunek;
 
     public GUI() throws SQLException
     {
+    	aplikowanieNaKierunek = new AplikowanieNaKierunek();
     	przypisanieProwadzacychDoRealizacji = new PrzypisanieProwadzacychDoRealizacji();
+    	usuwanieProwadzacychZRealizacji = new UsuwanieProwadzacychZRealizacji();
         contentPane = new JPanel();
+        wyborUzytkownika = new WyborUzytkownika(contentPane);
+        loginKandydat = new LoginKandydat(contentPane);
+        loginStudent = new LoginStudent(contentPane);
+        loginPracownik = new LoginPracownik(contentPane);
         loginFrame = new LoginFrame(contentPane);
         startFrame = new ApplyStartFrame(contentPane);
-        majorsFrame = new MajorsFrame(contentPane);
-        majorsInfoFrame = new MajorsInfoFrame(contentPane);
+        majorsFrame = new MajorsFrame(contentPane, aplikowanieNaKierunek);
+        majorsInfoFrame = new MajorsInfoFrame(contentPane, aplikowanieNaKierunek);
         applyOkFrame = new ApplyOkFrame(contentPane);
         applyBadDateFrame = new ApplyBadDateFrame(contentPane);
 
@@ -36,12 +52,21 @@ public class GUI extends JFrame
         lecturersListFrame = new LecturersListFrame(contentPane, przypisanieProwadzacychDoRealizacji);
         lecturerChosenFrame = new LecturerChosenFrame(contentPane);
         lecturerUnavailableFrame = new LecturerUnavailableFrame(contentPane);
+        
+        usuniecieProwadzacegoListaProwadzacych = new UsuniecieProwadzacegoListaProwadzacychOkno(contentPane, usuwanieProwadzacychZRealizacji);
+        usuniecieProwadzacegoListaPrzedmiotow = new UsuniecieProwadzacegoListaPrzedmiotowOkno(contentPane, usuwanieProwadzacychZRealizacji);
+        prowadzacyUsunietyOkno = new ProwadzacyUsunietyOkno(contentPane);
+        nieMaProwadzacychPrzypisanychDoRealizacji = new NieMaProwadzacychPrzypisanychDoRealizacji(contentPane);
     }
 
     public void displayGUI()
     {
         add(contentPane);
         contentPane.setLayout(new CardLayout());
+        contentPane.add(wyborUzytkownika, "wybor");
+        contentPane.add(loginKandydat, "loginKandydat");
+        contentPane.add(loginStudent, "loginStudent");
+        contentPane.add(loginPracownik, "loginPracownik");
         contentPane.add(loginFrame, "login");
         contentPane.add(startFrame, "start");
         contentPane.add(majorsFrame, "majors");
@@ -53,6 +78,10 @@ public class GUI extends JFrame
         contentPane.add(lecturersListFrame, "lecturersList");
         contentPane.add(lecturerChosenFrame, "lecturerChosen");
         contentPane.add(lecturerUnavailableFrame, "lecturerUnavailable");
+        contentPane.add(usuniecieProwadzacegoListaPrzedmiotow, "usunieciePrzedmioty");
+        contentPane.add(usuniecieProwadzacegoListaProwadzacych, "usuniecieProwadzacy");
+        contentPane.add(prowadzacyUsunietyOkno, "usuniety");
+        contentPane.add(nieMaProwadzacychPrzypisanychDoRealizacji,"nieMaProwadzacych");
         
         
 
