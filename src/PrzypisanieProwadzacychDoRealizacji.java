@@ -20,11 +20,6 @@ public class PrzypisanieProwadzacychDoRealizacji {
 		
 		try{
 			connect.setConnection();
-			ResultSet rs = connect.connectionMakeRead("SELECT IMIE FROM PRACOWNICY");
-			
-			while (rs.next()) {
-				//System.out.println(rs.getString(1));
-			}
 			
 			ResultSet RsProwadzacy = connect.connectionMakeRead("SELECT PR.ID_PRACOWNIKA, IMIE, NAZWISKO FROM Prowadzacy Pr JOIN Pracownicy P ON Pr.id_pracownika = P.id_pracownika");
 			ResultSet RsPrzedmioty = connect.connectionMakeRead("SELECT id_realizacji, nazwa, kod_przedmiotu, numer_semestru "
@@ -48,9 +43,9 @@ public class PrzypisanieProwadzacychDoRealizacji {
 		{
 			System.out.println("Blad przetwarzania SQL");
 		}
-		catch (IOException eIO) // B��d obs�ugi pliku zawieraj�cego parametry po��czenia
+		catch (IOException eIO) 
 		{
-			System.out.println("Nie można otworzyć pliku z parametrami połączenia");
+			System.out.println("Nie mozna otworzyc pliku z parametrami polaczenia");
 		}
 		
 		this.listaProwadzacych = listaProwadzacych;
@@ -103,6 +98,41 @@ public class PrzypisanieProwadzacychDoRealizacji {
 		this.realizacjaPrzedmiotu = realizacjaPrzedmiotu;
 	}
 
-
+	public void update() {
+		Connections connect = new Connections();
+		
+		listaProwadzacych.setProwadzacy(new HashSet<Prowadzacy>());
+		listaRealizacji.setRealizacjaPrzedmiotu(new HashSet<RealizacjaPrzedmiotu>());
+		
+		try{
+			connect.setConnection();
+			
+			ResultSet RsProwadzacy = connect.connectionMakeRead("SELECT PR.ID_PRACOWNIKA, IMIE, NAZWISKO FROM Prowadzacy Pr JOIN Pracownicy P ON Pr.id_pracownika = P.id_pracownika");
+			ResultSet RsPrzedmioty = connect.connectionMakeRead("SELECT id_realizacji, nazwa, kod_przedmiotu, numer_semestru "
+				 +	"FROM Realizacje_przedmiotow RP "
+				 +	"JOIN Przedmioty P ON RP.id_przedmiotu = P.id_przedmiotu");
+			
+			while (RsProwadzacy.next()) {
+				Prowadzacy prowadzacy = new Prowadzacy(RsProwadzacy.getInt(1),RsProwadzacy.getString(2),RsProwadzacy.getString(3));
+				listaProwadzacych.dodajProwadzacego(prowadzacy);
+			}
+			
+			while (RsPrzedmioty.next()) {
+				Przedmiot przedmiot = new Przedmiot(RsPrzedmioty.getString(2),  RsPrzedmioty.getString(4));
+				RealizacjaPrzedmiotu realizacjaPrzedmiotu = new RealizacjaPrzedmiotu(RsPrzedmioty.getInt(1), przedmiot , RsPrzedmioty.getString(3));
+				listaRealizacji.dodajRealizacje(realizacjaPrzedmiotu);
+			}
+			
+			connect.closeConnection();
+		}
+		catch (SQLException eSQL) 
+		{
+			System.out.println("Blad przetwarzania SQL");
+		}
+		catch (IOException eIO) 
+		{
+			System.out.println("Nie mozna otworzyc pliku z parametrami polaczenia");
+		}
+	}
 	
 }

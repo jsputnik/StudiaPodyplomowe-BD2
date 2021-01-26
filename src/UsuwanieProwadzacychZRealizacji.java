@@ -2,6 +2,7 @@ import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 public class UsuwanieProwadzacychZRealizacji {
@@ -86,6 +87,8 @@ public class UsuwanieProwadzacychZRealizacji {
 	
 	public void update() {
 		Connections connect = new Connections();
+		
+		listaPrzypisowProwadzacychDoRealizacji.setPrzypisProwadzacegoDoRealizacji(new HashSet<PrzypisProwadzacegoDoRealizacji>());
 		
 		try{
 			connect.setConnection();
