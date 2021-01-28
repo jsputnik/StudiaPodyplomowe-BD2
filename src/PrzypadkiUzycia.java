@@ -55,7 +55,7 @@ public class PrzypadkiUzycia {
 		
 		Date data = new Date();
 		
-		//planowanie.planujAplikowanie(data, data, 15, 2);
+		planowanie.planujAplikowanie(data, data, 15, 2);
 
 	}
 	
