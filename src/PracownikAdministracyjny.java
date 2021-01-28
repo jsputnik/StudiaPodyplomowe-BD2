@@ -2,7 +2,10 @@
 import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Set;
 
@@ -19,7 +22,36 @@ public class PracownikAdministracyjny extends Pracownik {
 		this.listaPracownikowAdministracyjnych = listaPracownikowAdministracyjnych;
 	}
 
-	public void planujAplikowanie() {
+	public void planujAplikowanie(Date dataRozpoczecia, Date dataZakonczenia, int liczbaMiejsc,int idKierunku) {
+		Connections connect = new Connections();
+		
+		LocalDate localDataR = dataRozpoczecia.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+		int miesiacR = localDataR.getMonthValue();
+		int dzienR = localDataR.getDayOfMonth();
+		int rokR = localDataR.getYear() - 2000;
+		
+		LocalDate localDataZ = dataZakonczenia.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+		int miesiacZ = localDataZ.getMonthValue();
+		int dzienZ = localDataZ.getDayOfMonth();
+		int rokZ = localDataZ.getYear() - 2000;
+		
+		try{
+			connect.setConnection();
+			connect.connectionMakeUpdate("UPDATE Kierunki SET limit_miejsc = " + liczbaMiejsc + " , data_rozpoczecia_rekrutacji = '"
+				   + rokR +"/" + miesiacR + "/" + dzienR + "' , "
+				   + "data_zakonczenia_rekrutacji = '"+ rokZ +"/" + miesiacZ + "/" + dzienZ + "' WHERE id_kierunku = " + idKierunku);
+			connect.closeConnection();
+		}
+		catch (SQLException eSQL) 
+		{
+			System.out.println("Blad przetwarzania SQL");
+		}
+		catch (IOException eIO) 
+		{
+			System.out.println("Nie mo¿na otworzyæ pliku z parametrami po³¹czenia");
+		}
+		
+		
 	}
 
 	public void przyjmijRejestracje() {

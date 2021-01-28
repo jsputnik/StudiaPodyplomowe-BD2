@@ -35,7 +35,7 @@ public class AplikowanieNaKierunek {
 			{
 				System.out.println("Blad przetwarzania SQL");
 			}
-			catch (IOException eIO) // B³¹d obs³ugi pliku zawieraj¹cego parametry po³¹czenia
+			catch (IOException eIO) 
 			{
 				System.out.println("Nie mo¿na otworzyæ pliku z parametrami po³¹czenia");
 			}
@@ -102,8 +102,6 @@ public class AplikowanieNaKierunek {
 				Kierunek kierunek = new Kierunek(RsKierunki.getInt(1), RsKierunki.getString(2), RsKierunki.getDate(3), RsKierunki.getDate(4));
 				this.listaKierunkow.dodajKierunek(kierunek);
 			}
-			
-			
 			
 			connect.closeConnection();
 		}

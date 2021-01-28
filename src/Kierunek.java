@@ -1,7 +1,16 @@
+
 import java.util.Date;
 import java.util.Set;
 
 public class Kierunek {
+	
+	Kierunek(int id, String nazwa, Date dataRozpoczeciaRekrutacji, Date dataZakonczeniaRekrutacji, int limitMiejsc){
+		this.id = id;
+		this.nazwa = nazwa;
+		this.dataRozpoczeciaRekrutacji = dataRozpoczeciaRekrutacji;
+		this.dataZakonczeniaRekrutacji = dataZakonczeniaRekrutacji;
+		this.limitMiejsc = limitMiejsc;
+	}
 	
 	Kierunek(int id, String nazwa, Date dataRozpoczeciaRekrutacji, Date dataZakonczeniaRekrutacji){
 		this.id = id;
@@ -10,10 +19,10 @@ public class Kierunek {
 		this.dataZakonczeniaRekrutacji = dataZakonczeniaRekrutacji;
 	}
 	
-	public Kierunek()
-	{
-		// TODO Auto-generated constructor stub
+	
+	public Kierunek() {
 	}
+
 
 	private int id;
 
