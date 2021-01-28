@@ -14,8 +14,12 @@ public class Logowanie {
 	
 	private Prowadzacy prowadzacy;
 	
-	public void logujKandydata(String pesel) {
+	private PracownikAdministracyjny pracownikAdministracyjny;
+	
+	public Boolean logujKandydata(String pesel) {
 		Connections connect = new Connections();
+		
+		Boolean flaga = false;
 		
 		try{
 			connect.setConnection();
@@ -23,11 +27,12 @@ public class Logowanie {
 				+	"FROM Kandydaci"
 				+	"WHERE pesel = " + pesel);
 			
-			while (RsKandydat.next()) {
+			 if(RsKandydat.next()) {
 				kandydat.setId(RsKandydat.getInt(1));
 				kandydat.setImie(RsKandydat.getString(2));
 				kandydat.setNazwisko(RsKandydat.getString(3));
 				kandydat.setPesel(RsKandydat.getString(4));
+				flaga = true;
 			}
 			
 			connect.closeConnection();
@@ -38,12 +43,16 @@ public class Logowanie {
 		}
 		catch (IOException eIO) 
 		{
-			System.out.println("Nie mo¿na otworzyæ pliku z parametrami po³¹czenia");
+			System.out.println("Nie moÅ¼na otworzyÄ‡ pliku z parametrami poÅ‚Ä…czenia");
 		}
+		
+		return flaga;
 	}
 	
-	public void logujProwadzacego(String pesel) {
+	public Boolean logujProwadzacego(String pesel) {
 		Connections connect = new Connections();
+		
+		Boolean flaga = false;
 		
 		try{
 			connect.setConnection();
@@ -67,8 +76,43 @@ public class Logowanie {
 		}
 		catch (IOException eIO) 
 		{
-			System.out.println("Nie mo¿na otworzyæ pliku z parametrami po³¹czenia");
+			System.out.println("Nie moÅ¼na otworzyÄ‡ pliku z parametrami poÅ‚Ä…czenia");
 		}
+		
+		return flaga;
+	}
+	
+	public Boolean logujPracownikaAdministracyjnego(String pesel) {
+		Connections connect = new Connections();
+		
+		Boolean flaga = false;
+		
+		try{
+			connect.setConnection();
+			ResultSet RsPracownik = connect.connectionMakeRead("SELECT id_pracownika, imie, nazwisko, pesel"
+					 + "FROM PRACOWNICY"
+					 + "WHERE pesel = " + pesel);
+			
+			while (RsPracownik.next()) {
+				pracownikAdministracyjny.setId(RsPracownik.getInt(1));
+				pracownikAdministracyjny.setImie(RsPracownik.getString(2));
+				pracownikAdministracyjny.setNazwisko(RsPracownik.getString(3));
+				pracownikAdministracyjny.setPesel(RsPracownik.getString(4));
+			}
+			
+			connect.closeConnection();
+		}
+		catch (SQLException eSQL) 
+		{
+			System.out.println("Blad przetwarzania SQL");
+		}
+		catch (IOException eIO) 
+		{
+			System.out.println("Nie moÅ¼na otworzyÄ‡ pliku z parametrami poÅ‚Ä…czenia");
+		}
+		
+		return flaga;
 	}
 	
 }
+
