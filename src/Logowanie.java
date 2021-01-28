@@ -23,8 +23,8 @@ public class Logowanie {
 		
 		try{
 			connect.setConnection();
-			ResultSet RsKandydat = connect.connectionMakeRead("SELECT id_kandydata, imie, nazwisko, pesel"
-				+	"FROM Kandydaci"
+			ResultSet RsKandydat = connect.connectionMakeRead("SELECT id_kandydata, imie, nazwisko, pesel "
+				+	"FROM Kandydaci "
 				+	"WHERE pesel = " + pesel);
 			
 			 if(RsKandydat.next()) {
@@ -56,9 +56,9 @@ public class Logowanie {
 		
 		try{
 			connect.setConnection();
-			ResultSet RsProwadzacy = connect.connectionMakeRead("SELECT Prow.id_pracownika, imie, nazwisko, pesel"
-					+ "FROM Prowadzacy Prow"
-					+ "JOIN Pracownicy Prac ON Prow.id_pracownika = Prac.id_pracownika"
+			ResultSet RsProwadzacy = connect.connectionMakeRead("SELECT Prow.id_pracownika, imie, nazwisko, pesel "
+					+ "FROM Prowadzacy Prow "
+					+ "JOIN Pracownicy Prac ON Prow.id_pracownika = Prac.id_pracownika "
 					 + "WHERE pesel = " + pesel);
 			
 			while (RsProwadzacy.next()) {
@@ -89,8 +89,8 @@ public class Logowanie {
 		
 		try{
 			connect.setConnection();
-			ResultSet RsPracownik = connect.connectionMakeRead("SELECT id_pracownika, imie, nazwisko, pesel"
-					 + "FROM PRACOWNICY"
+			ResultSet RsPracownik = connect.connectionMakeRead("SELECT id_pracownika, imie, nazwisko, pesel "
+					 + "FROM PRACOWNICY "
 					 + "WHERE pesel = " + pesel);
 			
 			while (RsPracownik.next()) {
@@ -115,4 +115,3 @@ public class Logowanie {
 	}
 	
 }
-
