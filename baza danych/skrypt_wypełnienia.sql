@@ -23,6 +23,8 @@ INSERT INTO Pracownicy
     VALUES (3, 'Prowadzacy', 'Marek', 'Kolodziej', 73112382744, 'test', 111222333, 1);
 INSERT INTO Pracownicy
     VALUES (4, 'Prowadzacy', 'Aleksander', 'Kaminski', 74011263563, 'test', 111222333, 1);
+INSERT INTO Pracownicy
+    VALUES (5, 'Pracownik administracyjny', 'Jozef', 'Szymczak', 66080268721, 'test', 111222333, 1);
 
 INSERT INTO Instytuty
     VALUES (1, 'Instytut Informatyki', 'testi', 333222111, 1);
@@ -35,8 +37,10 @@ INSERT INTO Prowadzacy
     VALUES (3, 'Wykladowca', 1);
 INSERT INTO Prowadzacy
     VALUES (4, 'Wykladowca', 1);
-    
 
+INSERT INTO Pracownicy_administracyjni
+    VALUES (1, 'test');
+    
 INSERT INTO Realizacje_przedmiotow
     VALUES (1, 1, '20Z', 1);
 INSERT INTO Realizacje_przedmiotow
@@ -53,7 +57,7 @@ INSERT INTO Kandydaci (id_kandydata, imie, nazwisko, pesel, id_adresu)
 INSERT INTO Kandydaci (id_kandydata, imie, nazwisko, pesel, id_adresu)
     VALUES (3, 'Daniel', 'Krawczyk', 96030919599, 1);
 INSERT INTO Kandydaci (id_kandydata, imie, nazwisko, pesel, id_adresu)
-    VALUES (4, 'Anna', 'Szyma�ska', 96030695383, 1);
+    VALUES (4, 'Anna', 'Szymanska', 96030695383, 1);
 
 INSERT INTO Kierunki(id_kierunku, nazwa, data_rozpoczecia_rekrutacji, data_zakonczenia_rekrutacji)
     VALUES (1, 'Automatyka i robotyka', TO_DATE('20-01-2021','dd-mm-yyyy'), TO_DATE('20-02-2021','dd-mm-yyyy'));
@@ -64,22 +68,9 @@ INSERT INTO Kierunki(id_kierunku, nazwa, data_rozpoczecia_rekrutacji, data_zakon
 INSERT INTO Kierunki(id_kierunku, nazwa, data_rozpoczecia_rekrutacji, data_zakonczenia_rekrutacji)
     VALUES (4, 'Telekomunikacja', TO_DATE('20-01-2021','dd-mm-yyyy'), TO_DATE('20-02-2021','dd-mm-yyyy'));
 
-
-
--- Kierownik
+-- Kierownik jako wykladowca
 INSERT INTO Przypisy_prow_do_real
     VALUES (przypis_pr_seq.nextval, 1, 1, SYSDATE, '1');
--- Prowadzacy
---INSERT INTO Przypisy_prow_do_real
---    VALUES (przypis_pr_seq.nextval, id_pracownika, id_realizacji, SYSDATE, '0');
-
-
---INSERT INTO Przypisy_prow_do_real
---    VALUES (1, 4, 4, DATE, czy_kierownik);
-
---DELETE FROM Przypisy_prow_do_real 
---    WHERE id_pracownika = 1 AND id_realizacji = 3;
-
 
 INSERT INTO Aplikacje
     VALUES (aplikacja_seq.nextval, 1, 1, '21L', SYSDATE, ADD_MONTHS(SYSDATE, 6));
