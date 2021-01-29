@@ -3,9 +3,9 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-class LoginPracownik extends JPanel
+class LoginProwadzacy extends JPanel
 {
-    public LoginPracownik(JPanel panel, Logowanie login_Pracownik)
+    public LoginProwadzacy(JPanel panel, Logowanie login_Prowadzacy)
     {
         //construct components
         JTextField login = new JTextField();
@@ -35,12 +35,11 @@ class LoginPracownik extends JPanel
             public void actionPerformed(ActionEvent e)
             {
                 CardLayout cardLayout = (CardLayout) panel.getLayout();
-//                String pesel = login.getText();
-//                boolean log = login_Pracownik.logujPracownikaAdministracyjnego(pesel);
+                String pesel = login.getText();
+//                boolean log = login_Prowadzacy.logujProwadzacego(pesel);
 //                if(log == true) {
-                cardLayout.show(panel, "dostepneopcje");
+                cardLayout.show(panel, "lecturerStart");
                 //}
-                
 
             }
         });

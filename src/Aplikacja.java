@@ -3,6 +3,11 @@ import java.util.Set;
 
 public class Aplikacja {
 	
+	public Aplikacja() 
+	{
+		kandydat = new Kandydat();
+	}
+	
 	private int id;
 
 	public int getId() {

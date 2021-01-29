@@ -5,7 +5,7 @@ import java.awt.event.ActionListener;
 
 class LoginKandydat extends JPanel
 {
-    public LoginKandydat(JPanel panel)
+    public LoginKandydat(JPanel panel, Logowanie loginKandydat)
     {
         //construct components
         JTextField login = new JTextField();
@@ -34,8 +34,13 @@ class LoginKandydat extends JPanel
             @Override
             public void actionPerformed(ActionEvent e)
             {
+            	
                 CardLayout cardLayout = (CardLayout) panel.getLayout();
-                cardLayout.show(panel, "start");
+                String pesel = login.getText();
+//                boolean log = loginKandydat.logujKandydata(pesel);
+//                if(log == true) {
+                	cardLayout.show(panel, "start");
+                //}
 
             }
         });

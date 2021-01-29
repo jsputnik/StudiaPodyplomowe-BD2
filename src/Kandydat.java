@@ -1,9 +1,9 @@
-
 import java.util.Set;
 
 public class Kandydat extends Osoba {
 	
-	Kandydat(){
+	Kandydat()
+	{
 		
 	}
 	

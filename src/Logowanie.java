@@ -7,6 +7,7 @@ public class Logowanie {
 	Logowanie(){
 		kandydat = new Kandydat();
 		prowadzacy = new Prowadzacy();
+		pracownikAdministracyjny = new PracownikAdministracyjny();
 	
 	}
 	
@@ -112,6 +113,11 @@ public class Logowanie {
 		}
 		
 		return flaga;
+	}
+	
+	public Kandydat getKandydat() 
+	{
+		return this.kandydat;
 	}
 	
 }

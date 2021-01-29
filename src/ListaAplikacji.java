@@ -1,7 +1,13 @@
 
+import java.util.HashSet;
 import java.util.Set;
 
 public class ListaAplikacji {
+	
+	public ListaAplikacji() 
+	{
+		aplikacja = new HashSet<Aplikacja>();
+	}
 	
 	private Set<Aplikacja> aplikacja;
 
@@ -18,6 +24,7 @@ public class ListaAplikacji {
 
 	public void dodajAplikacje(Aplikacja aplikacja) {
 		this.aplikacja.add(aplikacja);
+		
 	}
 
 	public void usunAplikacje() {

@@ -2,6 +2,10 @@
 import java.util.Set;
 
 public class Pracownik extends Osoba {
+	
+	public Pracownik() 
+	{
+	}
 
 	private int id;
 

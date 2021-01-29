@@ -14,6 +14,8 @@ public class AplikowanieNaKierunek {
 		this.listaKierunkow = new ListaKierunkow();
 		
 		pracownikAdministracyjny = new PracownikAdministracyjny();
+		
+		kierunek = new Kierunek();
 		 
 		 Connections connect = new Connections();
 			
@@ -37,7 +39,7 @@ public class AplikowanieNaKierunek {
 			}
 			catch (IOException eIO) 
 			{
-				System.out.println("Nie moøna otworzyÊ pliku z parametrami po≥πczenia");
+				System.out.println("Nie mo≈ºna otworzyƒá pliku z parametrami po≈Ç≈°czenia");
 			}
 		 
 		 
@@ -88,6 +90,11 @@ public class AplikowanieNaKierunek {
 		this.kierunek = kierunek;
 	}
 	
+	public Kierunek getKierunek() 
+	{
+		return this.kierunek;
+	}
+	
 	public void update() {
 		Connections connect = new Connections();
 		
@@ -109,11 +116,13 @@ public class AplikowanieNaKierunek {
 		{
 			System.out.println("Blad przetwarzania SQL");
 		}
-		catch (IOException eIO) // B≥πd obs≥ugi pliku zawierajπcego parametry po≥πczenia
+		catch (IOException eIO) // B≈Ç≈°d obs≈Çugi pliku zawieraj≈°cego parametry po≈Ç≈°czenia
 		{
-			System.out.println("Nie moøna otworzyÊ pliku z parametrami po≥πczenia");
+			System.out.println("Nie mo≈ºna otworzyƒá pliku z parametrami po≈Ç≈°czenia");
 		}
 	 
 	}
+	
+	
 	
 }

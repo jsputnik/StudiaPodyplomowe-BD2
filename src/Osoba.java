@@ -1,5 +1,10 @@
 
 public class Osoba {
+	
+	public Osoba() 
+	{
+		pesel = new String();
+	}
 
 	private String imie;
 
@@ -21,13 +26,13 @@ public class Osoba {
 		this.nazwisko = nazwisko;
 	}
 
-	private Object pesel;
+	private String pesel;
 
-	public Object getPesel() {
+	public String getPesel() {
 		return pesel;
 	}
 
-	public void setPesel(Object pesel) {
+	public void setPesel(String pesel) {
 		this.pesel = pesel;
 	}
 

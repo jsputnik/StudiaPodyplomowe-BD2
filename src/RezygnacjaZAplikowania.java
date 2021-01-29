@@ -32,9 +32,9 @@ public class RezygnacjaZAplikowania {
 		{
 			System.out.println("Blad przetwarzania SQL");
 		}
-		catch (IOException eIO) // B³¹d obs³ugi pliku zawieraj¹cego parametry po³¹czenia
+		catch (IOException eIO) // BÂ³Â¹d obsÂ³ugi pliku zawierajÂ¹cego parametry poÂ³Â¹czenia
 		{
-			System.out.println("Nie mo¿na otworzyæ pliku z parametrami po³¹czenia");
+			System.out.println("Nie moÂ¿na otworzyÃ¦ pliku z parametrami poÂ³Â¹czenia");
 		}
 		
 	}
@@ -71,6 +71,11 @@ public class RezygnacjaZAplikowania {
 		this.idKandydata = idKandydata;
 	}
 	
+	public int getIdKierunku() 
+	{
+		return this.idKierunku;
+	}
+	
 	public void update() {
 		Connections connect = new Connections();
 		
@@ -94,9 +99,9 @@ public class RezygnacjaZAplikowania {
 		{
 			System.out.println("Blad przetwarzania SQL");
 		}
-		catch (IOException eIO) // B³¹d obs³ugi pliku zawieraj¹cego parametry po³¹czenia
+		catch (IOException eIO) // BÂ³Â¹d obsÂ³ugi pliku zawierajÂ¹cego parametry poÂ³Â¹czenia
 		{
-			System.out.println("Nie mo¿na otworzyæ pliku z parametrami po³¹czenia");
+			System.out.println("Nie moÂ¿na otworzyÃ¦ pliku z parametrami poÂ³Â¹czenia");
 		}
 		
 	}
