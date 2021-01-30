@@ -17,6 +17,8 @@ public class RezygnacjaZAplikowaniaInfoOkno extends JPanel
         //setBackground(new Color(176, 224, 230));
         setPreferredSize(new Dimension(640, 360));
         setLayout(null);
+        
+        int num = rezygnacja.getKierunek().getLimitMiejsc();
 
 
         JLabel majors = new JLabel("Informacja o kierunku");
@@ -30,8 +32,8 @@ public class RezygnacjaZAplikowaniaInfoOkno extends JPanel
         add(next);
 
         JTextArea info = new JTextArea("Wybrany kierunek:\n");
-        info.append(/*rezygnacja.getListaAplikacjiStudenta(log.getKandydat().getPesel()) + "\n"*/);
-        //info.append("Limit miejsc: " + String.valueOf(num));
+        info.append(rezygnacja.getKierunek().getNazwa() + "\n");
+        info.append("Limit miejsc: " + num);
         info.setBounds(240, 80, 200, 200);
         info.setFont(new Font("Calibri", Font.BOLD, 17));
         info.setEditable(false);
@@ -51,7 +53,6 @@ public class RezygnacjaZAplikowaniaInfoOkno extends JPanel
                 cardLayout.show(panel, "rezygnacjaOk");
                 rezygnacja.rezygnujZAplikowania();
                 rezygnacja.update();
-                //aplikowanie.przypiszKandydataDoKierunku();
             }
         });
         

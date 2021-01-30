@@ -18,7 +18,7 @@ public class RezygnacjaOkOkno extends JPanel
 
 
         JLabel majors = new JLabel("Zostałeś wyrejestrowany z kierunku");
-        majors.setBounds(230, 120, 200, 47);
+        majors.setBounds(170, 120, 300, 47);
         majors.setFont(new Font("Calibri", Font.BOLD, 20));
         add(majors);
 

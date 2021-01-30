@@ -11,7 +11,7 @@ public class MajorsFrame extends JPanel
         /**
      * Create the panel.
      */
-    public MajorsFrame(JPanel panel, AplikowanieNaKierunek aplikowanie) throws SQLException
+    public MajorsFrame(JPanel panel, AplikowanieNaKierunek aplikowanie, Logowanie log) throws SQLException
     {
         //setBackground(new Color(176, 224, 230));
         setPreferredSize(new Dimension(640, 360));
@@ -63,7 +63,7 @@ public class MajorsFrame extends JPanel
                 }
                 try
 				{
-					MajorsInfoFrame majorsInfoFrame = new MajorsInfoFrame(panel, aplikowanie);
+					MajorsInfoFrame majorsInfoFrame = new MajorsInfoFrame(panel, aplikowanie, log);
 					panel.add(majorsInfoFrame, "majorsInfo");
 				} catch (SQLException e1)
 				{

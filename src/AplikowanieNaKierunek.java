@@ -21,11 +21,11 @@ public class AplikowanieNaKierunek {
 			
 			try{
 				connect.setConnection();
-				ResultSet RsKierunki = connect.connectionMakeRead("SELECT id_kierunku, nazwa, data_rozpoczecia_rekrutacji, data_zakonczenia_rekrutacji "
+				ResultSet RsKierunki = connect.connectionMakeRead("SELECT id_kierunku, nazwa, data_rozpoczecia_rekrutacji, data_zakonczenia_rekrutacji, limit_miejsc "
 						+ "FROM Kierunki");
 				
 				while (RsKierunki.next()) {
-					Kierunek kierunek = new Kierunek(RsKierunki.getInt(1), RsKierunki.getString(2), RsKierunki.getDate(3), RsKierunki.getDate(4));
+					Kierunek kierunek = new Kierunek(RsKierunki.getInt(1), RsKierunki.getString(2), RsKierunki.getDate(3), RsKierunki.getDate(4), RsKierunki.getInt(5));
 					this.listaKierunkow.dodajKierunek(kierunek);
 				}
 				
@@ -102,7 +102,7 @@ public class AplikowanieNaKierunek {
 		
 		try{
 			connect.setConnection();
-			ResultSet RsKierunki = connect.connectionMakeRead("SELECT id_kierunku, nazwa, data_rozpoczecia_rekrutacji, data_zakonczenia_rekrutacji limit_miejsc "
+			ResultSet RsKierunki = connect.connectionMakeRead("SELECT id_kierunku, nazwa, data_rozpoczecia_rekrutacji, data_zakonczenia_rekrutacji, limit_miejsc "
 					+ "FROM Kierunki");
 			
 			while (RsKierunki.next()) {

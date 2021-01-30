@@ -10,7 +10,7 @@ public class MajorsInfoFrame extends JPanel
     /**
      * Create the panel.
      */
-    public MajorsInfoFrame(JPanel panel, AplikowanieNaKierunek aplikowanie) throws SQLException
+    public MajorsInfoFrame(JPanel panel, AplikowanieNaKierunek aplikowanie, Logowanie log) throws SQLException
     {
         //setBackground(new Color(176, 224, 230));
         setPreferredSize(new Dimension(640, 360));
@@ -49,7 +49,8 @@ public class MajorsInfoFrame extends JPanel
             {
                 CardLayout cardLayout = (CardLayout) panel.getLayout();
                 cardLayout.show(panel, "applyOk");
-                //aplikowanie.przypiszKandydataDoKierunku();
+                aplikowanie.przypiszKandydataDoKierunku(log.getKandydat().getId(), aplikowanie.getKierunek().getNazwa());
+                aplikowanie.update();
             }
         });
         

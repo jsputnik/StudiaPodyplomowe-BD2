@@ -37,7 +37,7 @@ public class LecturersListFrame extends JPanel
 
 
         JLabel subjects = new JLabel("Dostępni prowadzący");
-        subjects.setBounds(170, 25, 300, 47);
+        subjects.setBounds(220, 25, 300, 47);
         subjects.setFont(new Font("Calibri", Font.BOLD, 20));
         add(subjects);
 

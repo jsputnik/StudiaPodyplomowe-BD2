@@ -2,12 +2,13 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 
 class ApplyStartFrame extends JPanel
 {
 
 
-    public ApplyStartFrame(JPanel panel)
+    public ApplyStartFrame(JPanel panel, RezygnacjaZAplikowania rezygnacja, AplikowanieNaKierunek aplikowanie, Logowanie loginKandydat)
     {
         //construct components
         JButton apply = new JButton("Aplikowanie");
@@ -34,6 +35,18 @@ class ApplyStartFrame extends JPanel
             public void actionPerformed(ActionEvent e)
             {
                 CardLayout cardLayout = (CardLayout) panel.getLayout();
+                aplikowanie.update();
+                MajorsFrame majorsFrame;
+				try
+				{
+					majorsFrame = new MajorsFrame(panel, aplikowanie, loginKandydat);
+					panel.add(majorsFrame, "majors");
+				} catch (SQLException e1)
+				{
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+                
                 cardLayout.show(panel, "majors");
             }
         });
@@ -43,6 +56,17 @@ class ApplyStartFrame extends JPanel
             public void actionPerformed(ActionEvent e)
             {
             	CardLayout cardLayout = (CardLayout) panel.getLayout();
+            	rezygnacja.update();
+            	 try
+ 				{
+ 					RezygnacjaZAplikowaniaListaOkno aplikowaniaListaOkno = new RezygnacjaZAplikowaniaListaOkno(panel, rezygnacja, loginKandydat);
+ 					panel.add(aplikowaniaListaOkno, "rezygnacjaLista");
+ 				} catch (SQLException e1)
+ 				{
+ 					// TODO Auto-generated catch block
+ 					e1.printStackTrace();
+ 				}
+            	
                 cardLayout.show(panel, "rezygnacjaLista");	
             }
         });

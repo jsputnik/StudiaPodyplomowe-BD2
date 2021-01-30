@@ -2,10 +2,11 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 
 class LoginKandydat extends JPanel
 {
-    public LoginKandydat(JPanel panel, Logowanie loginKandydat)
+    public LoginKandydat(JPanel panel, Logowanie loginKandydat, RezygnacjaZAplikowania rezygnacja)
     {
         //construct components
         JTextField login = new JTextField();
@@ -28,6 +29,11 @@ class LoginKandydat extends JPanel
         password_label.setBounds(207, 180, 50, 25);
         password.setBounds(282, 180, 150, 30);
         login_button.setBounds(245, 255, 150, 50);
+        
+        JButton logout = new JButton("Wróć");
+        logout.setBounds(565, 0, 75, 30);
+        logout.setFont(new Font("Calibri", Font.BOLD, 12));
+        add(logout);
 
         login_button.addActionListener( new ActionListener()
         {
@@ -37,12 +43,23 @@ class LoginKandydat extends JPanel
             	
                 CardLayout cardLayout = (CardLayout) panel.getLayout();
                 String pesel = login.getText();
-//                boolean log = loginKandydat.logujKandydata(pesel);
-//                if(log == true) {
+                boolean log = loginKandydat.logujKandydata(pesel);
+                if(log == true) {
                 	cardLayout.show(panel, "start");
-                //}
+                }
 
             }
+        });
+        
+        logout.addActionListener(new ActionListener()
+        {
+            public void actionPerformed(ActionEvent e)
+            {
+                CardLayout cardLayout = (CardLayout) panel.getLayout();
+                    cardLayout.show(panel, "wybor");
+              
+            }
+
         });
 
 
@@ -52,5 +69,6 @@ class LoginKandydat extends JPanel
         add(password);
         add(password_label);
         add(login_button);
+        add(logout);
     }
 }

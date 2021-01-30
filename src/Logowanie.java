@@ -62,11 +62,12 @@ public class Logowanie {
 					+ "JOIN Pracownicy Prac ON Prow.id_pracownika = Prac.id_pracownika "
 					 + "WHERE pesel = " + pesel);
 			
-			while (RsProwadzacy.next()) {
+			if(RsProwadzacy.next()) {
 				prowadzacy.setId(RsProwadzacy.getInt(1));
 				prowadzacy.setImie(RsProwadzacy.getString(2));
 				prowadzacy.setNazwisko(RsProwadzacy.getString(3));
 				prowadzacy.setPesel(RsProwadzacy.getString(4));
+				flaga = true;
 			}
 			
 			connect.closeConnection();
@@ -94,11 +95,12 @@ public class Logowanie {
 					 + "FROM PRACOWNICY "
 					 + "WHERE pesel = " + pesel);
 			
-			while (RsPracownik.next()) {
+			if(RsPracownik.next()) {
 				pracownikAdministracyjny.setId(RsPracownik.getInt(1));
 				pracownikAdministracyjny.setImie(RsPracownik.getString(2));
 				pracownikAdministracyjny.setNazwisko(RsPracownik.getString(3));
 				pracownikAdministracyjny.setPesel(RsPracownik.getString(4));
+				flaga = true;
 			}
 			
 			connect.closeConnection();

@@ -45,6 +45,16 @@ public class PlanowanieAplikowania {
 	
 	private Kierunek kierunek;
 	
+	public void setKierunek(Kierunek kierunek) 
+	{
+		this.kierunek = kierunek;
+	}
+	
+	public Kierunek getKierunek() 
+	{
+		return this.kierunek;
+	}
+	
 	public List<Kierunek> getlistaKierunkow(){
 		Set<Kierunek> set = new HashSet<Kierunek>();
 		set = listaKierunkow.getKierunek();

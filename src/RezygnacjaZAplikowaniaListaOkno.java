@@ -20,13 +20,14 @@ public class RezygnacjaZAplikowaniaListaOkno extends JPanel
 	        setPreferredSize(new Dimension(640, 360));
 	        setLayout(null);
 	        
-	        List<Aplikacja> kierunki = rezygnacja.getListaAplikacjiStudenta(log.getKandydat().getPesel());
-	        int count = kierunki.size();
+	        List<Aplikacja> rezygnacja1 = rezygnacja.getListaAplikacjiStudenta(log.getKandydat().getPesel());
+	        int count = rezygnacja1.size();
+	        System.out.println(count);
 	        String[] listaKierunkow = new String[count];
 
 	        for (int i =0; i < count; ++i)
 	        {
-	            listaKierunkow[i] = /*kierunki.get(i).getSemestr() + " " +*/ kierunki.get(i).getKierunek().getNazwa();
+	            listaKierunkow[i] = rezygnacja1.get(i).getKierunek().getNazwa();
 	        }
 
 	        JList<String> list = new JList<String>(listaKierunkow);
@@ -61,9 +62,11 @@ public class RezygnacjaZAplikowaniaListaOkno extends JPanel
 	                
 	                for(int i = 0; i < listaKierunkow.length; ++i)
 	                {
-	                    if (list.getSelectedValue() == listaKierunkow[i])
-	                        rezygnacja.setIdKierunku(kierunki.get(i).getKierunek().getId());
+	                    if (list.getSelectedValue() == listaKierunkow[i]) {
+	                        rezygnacja.setIdKierunku(rezygnacja1.get(i).getKierunek().getId());
 	                    	rezygnacja.setIdKandydata(log.getKandydat().getId());
+	                    	rezygnacja.setKierunek(rezygnacja1.get(i).getKierunek());
+	                    }
 	                }
 	                try
 					{
@@ -75,14 +78,14 @@ public class RezygnacjaZAplikowaniaListaOkno extends JPanel
 						e1.printStackTrace();
 					}
 	                
-//	                if(aplikowanie.czyAplikowanieWOkresie(list.getSelectedValue())) 
-//	                {
+	                if(rezygnacja.czyRezygnacjaWOkresie(list.getSelectedValue())) 
+	                {
 	                	cardLayout.show(panel, "rezygnacjaInfo");
-//	                }
-//	                else 
-//	                {
-//	                	cardLayout.show(panel,"rezygnacjaBad");
-//	                }
+	                }
+	                else 
+	                {
+	                	cardLayout.show(panel,"rezygnacjaBad");
+	                }
 	                
 	            }
 	        });

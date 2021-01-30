@@ -28,6 +28,11 @@ class LoginProwadzacy extends JPanel
         password_label.setBounds(207, 180, 50, 25);
         password.setBounds(282, 180, 150, 30);
         login_button.setBounds(245, 255, 150, 50);
+        
+        JButton logout = new JButton("Wróć");
+        logout.setBounds(565, 0, 75, 30);
+        logout.setFont(new Font("Calibri", Font.BOLD, 12));
+        add(logout);
 
         login_button.addActionListener( new ActionListener()
         {
@@ -36,12 +41,23 @@ class LoginProwadzacy extends JPanel
             {
                 CardLayout cardLayout = (CardLayout) panel.getLayout();
                 String pesel = login.getText();
-//                boolean log = login_Prowadzacy.logujProwadzacego(pesel);
-//                if(log == true) {
+                boolean log = login_Prowadzacy.logujProwadzacego(pesel);
+                if(log == true) {
                 cardLayout.show(panel, "lecturerStart");
-                //}
+                }
 
             }
+        });
+        
+        logout.addActionListener(new ActionListener()
+        {
+            public void actionPerformed(ActionEvent e)
+            {
+                CardLayout cardLayout = (CardLayout) panel.getLayout();
+                    cardLayout.show(panel, "wybor");
+              
+            }
+
         });
 
 
@@ -51,5 +67,6 @@ class LoginProwadzacy extends JPanel
         add(password);
         add(password_label);
         add(login_button);
+        add(logout);
     }
 }

@@ -38,8 +38,8 @@ public class PracownikAdministracyjny extends Pracownik {
 		try{
 			connect.setConnection();
 			connect.connectionMakeUpdate("UPDATE Kierunki SET limit_miejsc = " + liczbaMiejsc + " , data_rozpoczecia_rekrutacji = '"
-				   + rokR +"/" + miesiacR + "/" + dzienR + "' , "
-				   + "data_zakonczenia_rekrutacji = '"+ rokZ +"/" + miesiacZ + "/" + dzienZ + "' WHERE id_kierunku = " + idKierunku);
+				   + dzienR +"/" + miesiacR + "/" + rokR + "' , "
+				   + "data_zakonczenia_rekrutacji = '"+ dzienZ +"/" + miesiacZ + "/" + rokZ + "' WHERE id_kierunku = " + idKierunku);
 			connect.closeConnection();
 		}
 		catch (SQLException eSQL) 

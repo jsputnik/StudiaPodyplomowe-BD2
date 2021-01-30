@@ -26,24 +26,17 @@ import org.jdatepicker.*;
 
 public class PracownikWprowadzDaneOkno extends JPanel
 {
-	
-		int month = java.util.Calendar.getInstance().get(java.util.Calendar.MONTH);
-	    int year = java.util.Calendar.getInstance().get(java.util.Calendar.YEAR);;
-	    JLabel l = new JLabel("", JLabel.CENTER);
-	    String day = "";
-	    JDialog d;
-	    JButton[] button = new JButton[49];
     
-	 	public PracownikWprowadzDaneOkno(JPanel panel, AplikowanieNaKierunek aplikowanie) throws SQLException
+	 	public PracownikWprowadzDaneOkno(JPanel panel, PlanowanieAplikowania planowanie) throws SQLException
 	    {
 	        //setBackground(new Color(176, 224, 230));
 	        setPreferredSize(new Dimension(640, 360));
 	        setLayout(null);
 	        
-	        int num = aplikowanie.getKierunek().getLimitMiejsc();
+	        int num = planowanie.getKierunek().getLimitMiejsc();
 
 
-	        JLabel majors = new JLabel("Wybrany kierunek: " + aplikowanie.getKierunek().getNazwa());
+	        JLabel majors = new JLabel("Wybrany kierunek: " + planowanie.getKierunek().getNazwa());
 	        majors.setBounds(200, 30, 400, 40);
 	        majors.setFont(new Font("Calibri", Font.BOLD, 20));
 	        add(majors);
@@ -67,7 +60,7 @@ public class PracownikWprowadzDaneOkno extends JPanel
 	        date_start_label.setFont(new Font("Calibri", Font.BOLD, 17));
 	        add(date_start_label);
 	        
-	        JLabel format_start_label = new JLabel("(DD/MM/YYYY)");
+	        JLabel format_start_label = new JLabel("(YYYY/MM/DD)");
 	        format_start_label.setBounds(160, 145, 190, 30);
 	        format_start_label.setFont(new Font("Calibri", Font.BOLD, 13));
 	        add(format_start_label);
@@ -81,7 +74,7 @@ public class PracownikWprowadzDaneOkno extends JPanel
 	        date_end_label.setFont(new Font("Calibri", Font.BOLD, 17));
 	        add(date_end_label);
 	        
-	        JLabel format_end_label = new JLabel("(DD/MM/YYYY)");
+	        JLabel format_end_label = new JLabel("(YYYY//MM/DD)");
 	        format_end_label.setBounds(160, 195, 190, 30);
 	        format_end_label.setFont(new Font("Calibri", Font.BOLD, 13));
 	        add(format_end_label);
@@ -102,22 +95,31 @@ public class PracownikWprowadzDaneOkno extends JPanel
 	            public void actionPerformed(ActionEvent e)
 	            {
 	                CardLayout cardLayout = (CardLayout) panel.getLayout();
-	                cardLayout.show(panel, "pracownikOk");
-	                //cardLayout.show(panel, "pracownikBad");
-	                //aplikowanie.przypiszKandydataDoKierunku();
+	                
 	                String start = date_start.getText();
 	                String end = date_end.getText();
 	                int limit = Integer.parseInt(number.getText());
+	                Date date1 = new Date();
+	                Date date2 = new Date();
 	                try
 					{
-						Date date1 = new SimpleDateFormat("dd/MM/yyyy").parse(start);
-						Date date2=new SimpleDateFormat("dd/MM/yyyy").parse(end); 
+						date1 = new SimpleDateFormat("yyyy/MM/dd").parse(start);
+						date2= new SimpleDateFormat("yyyy/MM/dd").parse(end);
+						System.out.println(date1);
 						
 					} catch (ParseException e1)
 					{
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
-					} 
+					}
+	                if(date1.before(date2)) {
+		                planowanie.planujAplikowanie(date1, date2, limit, planowanie.getKierunek().getId());
+		                planowanie.update();
+		                cardLayout.show(panel, "pracownikOk");
+	                }
+	                else {
+	                	cardLayout.show(panel, "pracownikNiepoprawne");
+	                }
 	            }
 	        });
 	        

@@ -14,13 +14,13 @@ import javax.swing.ListSelectionModel;
 
 public class PracownikListaOkno extends JPanel
 {
-	public PracownikListaOkno(JPanel panel, AplikowanieNaKierunek aplikowanie) throws SQLException
+	public PracownikListaOkno(JPanel panel, PlanowanieAplikowania planowanie) throws SQLException
     {
         //setBackground(new Color(176, 224, 230));
         setPreferredSize(new Dimension(640, 360));
         setLayout(null);
         
-        List<Kierunek> kierunki = aplikowanie.getlistaKierunkow();
+        List<Kierunek> kierunki = planowanie.getlistaKierunkow();
         int count = kierunki.size();
         String[] listaKierunkow = new String[count];
 
@@ -59,20 +59,26 @@ public class PracownikListaOkno extends JPanel
             {
                 CardLayout cardLayout = (CardLayout) panel.getLayout();
                 
+                
+                
                 for(int i = 0; i < listaKierunkow.length; ++i)
                 {
-                    if (list.getSelectedValue() == listaKierunkow[i])
-                        aplikowanie.setKierunek(kierunki.get(i));
+                    if (list.getSelectedValue().equals(listaKierunkow[i]))
+                        planowanie.setKierunek(kierunki.get(i));
                 }
                 
-                if(aplikowanie.czyAplikowanieWOkresie(list.getSelectedValue())) 
-                {
-                	cardLayout.show(panel, "wprowadzDane");
-                }
-                else 
-                {
-                	cardLayout.show(panel,"pracownikNiepoprawne");
-                }
+                try
+				{
+					PracownikWprowadzDaneOkno wprowadzDaneOkno = new PracownikWprowadzDaneOkno(panel, planowanie);
+					panel.add(wprowadzDaneOkno, "wprowadzDane");
+				} catch (SQLException e1)
+				{
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+                
+                cardLayout.show(panel, "wprowadzDane");
+               
                 
             }
         });

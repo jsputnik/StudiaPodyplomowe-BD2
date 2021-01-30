@@ -13,7 +13,7 @@ public class GUI extends JFrame
     private LoginProwadzacy loginProwadzacy;
     
     private ApplyStartFrame startFrame;
-    private MajorsFrame majorsFrame;
+    //private MajorsFrame majorsFrame;
     //private MajorsInfoFrame majorsInfoFrame;
     private ApplyOkFrame applyOkFrame;
     private ApplyBadDateFrame applyBadDateFrame;
@@ -31,12 +31,12 @@ public class GUI extends JFrame
     
     private PracownikDostepneOpcjeOkno dostepneOpcjeOkno;
     private PracownikListaOkno pracownikListaOkno;
-    private PracownikWprowadzDaneOkno wprowadzDaneOkno;
+    //private PracownikWprowadzDaneOkno wprowadzDaneOkno;
     private PracownikNiepoprawneDaneOkno niepoprawneDaneOkno;
     private PracownikOkOkno pracownikOkOkno;
     
-    private RezygnacjaZAplikowaniaInfoOkno rezygnacjaZAplikowaniaInfoOkno;
-    private RezygnacjaZAplikowaniaListaOkno aplikowaniaListaOkno;
+    //private RezygnacjaZAplikowaniaInfoOkno rezygnacjaZAplikowaniaInfoOkno;
+    //private RezygnacjaZAplikowaniaListaOkno aplikowaniaListaOkno;
     private RezygnacjaOkOkno rezygnacjaOkOkno;
     private ApplyBadDateFrame rezygnacjaBadOkno;
     
@@ -49,6 +49,8 @@ public class GUI extends JFrame
     private Logowanie login_Kandydat;
     private Logowanie login_Pracownik;
     private Logowanie login_Prowadzacy;
+    
+    private PlanowanieAplikowania planowanie;
 
     public GUI() throws SQLException
     {
@@ -56,6 +58,7 @@ public class GUI extends JFrame
     	przypisanieProwadzacychDoRealizacji = new PrzypisanieProwadzacychDoRealizacji();
     	usuwanieProwadzacychZRealizacji = new UsuwanieProwadzacychZRealizacji();
     	rezygnacjaZAplikowania = new RezygnacjaZAplikowania();
+    	planowanie = new PlanowanieAplikowania();
     	login_Kandydat = new Logowanie();
     	login_Pracownik = new Logowanie();
     	login_Prowadzacy = new Logowanie();
@@ -64,13 +67,13 @@ public class GUI extends JFrame
         contentPane = new JPanel();
         
         wyborUzytkownika = new WyborUzytkownika(contentPane);
-        loginKandydat = new LoginKandydat(contentPane, login_Kandydat);
+        loginKandydat = new LoginKandydat(contentPane, login_Kandydat, rezygnacjaZAplikowania);
         loginStudent = new LoginStudent(contentPane);
         loginPracownik = new LoginPracownik(contentPane, login_Pracownik);
         loginProwadzacy = new LoginProwadzacy(contentPane, login_Prowadzacy);
         
-        startFrame = new ApplyStartFrame(contentPane);
-        majorsFrame = new MajorsFrame(contentPane, aplikowanieNaKierunek);
+        startFrame = new ApplyStartFrame(contentPane, rezygnacjaZAplikowania, aplikowanieNaKierunek, login_Kandydat);
+        //majorsFrame = new MajorsFrame(contentPane, aplikowanieNaKierunek, login_Kandydat);
         //majorsInfoFrame = new MajorsInfoFrame(contentPane, aplikowanieNaKierunek);
         applyOkFrame = new ApplyOkFrame(contentPane);
         applyBadDateFrame = new ApplyBadDateFrame(contentPane);
@@ -82,13 +85,13 @@ public class GUI extends JFrame
         lecturerUnavailableFrame = new LecturerUnavailableFrame(contentPane);
         
         dostepneOpcjeOkno = new PracownikDostepneOpcjeOkno(contentPane);
-        pracownikListaOkno = new PracownikListaOkno(contentPane, aplikowanieNaKierunek);
-        wprowadzDaneOkno = new PracownikWprowadzDaneOkno(contentPane, aplikowanieNaKierunek);
+        pracownikListaOkno = new PracownikListaOkno(contentPane, planowanie);
+        //wprowadzDaneOkno = new PracownikWprowadzDaneOkno(contentPane, planowanie);
         niepoprawneDaneOkno = new PracownikNiepoprawneDaneOkno(contentPane);
         pracownikOkOkno = new PracownikOkOkno(contentPane);
         
-        rezygnacjaZAplikowaniaInfoOkno = new RezygnacjaZAplikowaniaInfoOkno(contentPane, rezygnacjaZAplikowania, login_Kandydat);
-        aplikowaniaListaOkno = new RezygnacjaZAplikowaniaListaOkno(contentPane, rezygnacjaZAplikowania, login_Kandydat);
+        //rezygnacjaZAplikowaniaInfoOkno = new RezygnacjaZAplikowaniaInfoOkno(contentPane, rezygnacjaZAplikowania, login_Kandydat);
+        //aplikowaniaListaOkno = new RezygnacjaZAplikowaniaListaOkno(contentPane, rezygnacjaZAplikowania, login_Kandydat);
         rezygnacjaOkOkno = new RezygnacjaOkOkno(contentPane);
         rezygnacjaBadOkno = new ApplyBadDateFrame(contentPane);
         
@@ -112,7 +115,7 @@ public class GUI extends JFrame
         contentPane.add(loginProwadzacy, "loginProwadzacy");
         
         contentPane.add(startFrame, "start");
-        contentPane.add(majorsFrame, "majors");
+        //contentPane.add(majorsFrame, "majors");
         //contentPane.add(majorsInfoFrame, "majorsInfo");
         contentPane.add(applyOkFrame, "applyOk");
         contentPane.add(applyBadDateFrame, "applyBad");
@@ -125,12 +128,12 @@ public class GUI extends JFrame
         
         contentPane.add(dostepneOpcjeOkno, "dostepneOpcje");
         contentPane.add(pracownikListaOkno, "pracownikLista");
-        contentPane.add(wprowadzDaneOkno, "wprowadzDane");
+        //contentPane.add(wprowadzDaneOkno, "wprowadzDane");
         contentPane.add(niepoprawneDaneOkno, "pracownikNiepoprawne");
         contentPane.add(pracownikOkOkno, "pracownikOk");
         
-        contentPane.add(rezygnacjaZAplikowaniaInfoOkno, "rezygnacjaInfo");
-        contentPane.add(aplikowaniaListaOkno, "rezygnacjaLista");
+        //contentPane.add(rezygnacjaZAplikowaniaInfoOkno, "rezygnacjaInfo");
+        //contentPane.add(aplikowaniaListaOkno, "rezygnacjaLista");
         contentPane.add(rezygnacjaOkOkno, "rezygnacjaOk");
         contentPane.add(rezygnacjaBadOkno, "rezygnacjaBad");
         

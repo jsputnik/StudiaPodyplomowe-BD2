@@ -2,10 +2,12 @@ import java.util.Set;
 
 public class Kandydat extends Osoba {
 	
-	Kandydat()
-	{
-		
+	public Kandydat(int id, String pesel) {
+		this.id = id;
+		this.setPesel(pesel);
 	}
+	
+	public Kandydat() {}
 	
 	private int id;
 
