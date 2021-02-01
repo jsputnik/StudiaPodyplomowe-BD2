@@ -1,3 +1,3 @@
 # StudiaPodyplomowe-BD2
 
-Aktualna baza danych jest w gałęzi main, aktualny kod aplikacji w gałęzi version1.0
+Aktualna baza danych jest na gałęzi main, aktualny kod aplikacji na gałęzi version1.0
